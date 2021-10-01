@@ -8,15 +8,8 @@ namespace Garaget
 {
     public abstract class Menu
     {
-        public void ShowMenu()
-        {
-
-        }
-
-        public bool HandleInput()
-        {
-            
-        }
+        public abstract Menu ShowMenu();
+        public abstract bool HandleInput();
 
         /// <summary>
         /// Returns the integer based on amountOfMenuOptions. Assumes a 0-based menu system.
@@ -41,28 +34,6 @@ namespace Garaget
         // Input
         // Parse
 
-        //public void ShowMainMenu()
-        //{
-        //    Console.WriteLine("What do you want to do?"
-        //                        + "\n1. Park vehicle." // also creates vehicle
-        //                        + "\n2. List vehicles." // show created vehicles
-        //                        + "\n3. Search vehicles." // searches all vehicles through properties
-        //                        + "\n4. Depart vehicle from garage." // removes vehicle from garage
-        //                        + "\n0. Exit application."); 
-        //    // Handle input
-        //}
-
-        //public void ShowParkVehicle()
-        //{
-        //    Console.WriteLine("What vehicle would you like to park?"
-        //                  + "\n1. Motorcycle"            
-        //                  + "\n2. Car"
-        //                  + "\n3. Bus"
-        //                  + "\n4. Truck"
-        //                  + "\n5. Plane"
-        //                  + "\n0. Back to Main menu");
-        //    // Handle input
-        //}
 
         //public void ListVehicles()
         //{
