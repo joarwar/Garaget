@@ -11,6 +11,8 @@ namespace Garaget
         public abstract Menu ShowMenu();
         public abstract bool HandleInput();
 
+        public bool cont = true;
+
         /// <summary>
         /// Returns the integer based on amountOfMenuOptions. Assumes a 0-based menu system.
         /// </summary>
