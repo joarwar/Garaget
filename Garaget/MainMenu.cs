@@ -43,6 +43,7 @@ namespace Garaget
                     default:
                         Console.WriteLine("Skriv gärna en siffra mellan 1-5.");
                         break;
+
                 }
 
             } while (cont == true);
