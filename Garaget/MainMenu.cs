@@ -55,7 +55,7 @@ namespace Garaget
 
         public override bool HandleInput()
         {
-            Console.WriteLine("INPUT!!!");
+            
             Console.ReadLine();
             return true;
         }

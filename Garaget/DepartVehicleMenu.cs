@@ -15,9 +15,9 @@ namespace Garaget
 
         public override Menu ShowMenu()
         {
-            Console.WriteLine("What car would you like to take out?");          
+            Console.WriteLine("What vehicle would you like to take out?");          
             
-            List<Vehicles> Vehiclesmade = new List<Vehicles>(10);
+            List<Garage> Vehiclesmade = new List<Garage>(10);
            
             //Vehicles.ForEach(Console.WriteLine);
 
