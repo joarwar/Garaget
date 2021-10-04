@@ -21,49 +21,50 @@ namespace Garaget
             // Handle input
             string vehiclepark = Console.ReadLine();
             
-
-            if (vehiclepark == "Motorcycle")
-            {
-                Motor myMotor = new Motor();
-                Console.WriteLine("How many tires does you motorcycle have?");
-                myMotor.tires = Console.ReadLine();
-                Console.WriteLine("What registration number does your motorcycle have?");
-                myMotor.reg = Console.ReadLine();
-                Console.WriteLine("What color is it?");
-                myMotor.color = Console.ReadLine();
-                Console.WriteLine("How many people fit in your motorcycle?");
-                myMotor.space = Console.ReadLine();
-                Console.WriteLine("What make is your motorcycle?");
-                myMotor.make = Console.ReadLine();
-                Console.WriteLine("What did your motorcycle cost in dollars?");
-                myMotor.price = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("How fast does your motorcycle go in km/h?");
-                myMotor.speed = Convert.ToInt32(Console.ReadLine());
-
-
-            }
-            else if (vehiclepark == "Car")
-            {
-                Car myCar = new Car();
-
-            }
-            else if (vehiclepark == "Bus")
-            {
-                Bus myBus = new Bus();
+            // Alternativ göra en array istället för att skapa flera fordo.
+            //if (vehiclepark == "Motorcycle")
+            //{
                 
-            }
-            else if (vehiclepark == "Truck")
-            {
-                Truck myTruck = new Truck();
-            }
-            else if (vehiclepark == "Plane")
-            {
-                Plane myPlane = new Plane();
-            }
-            else 
-            {
-                Console.WriteLine("Argh! Please try again!");
-            }
+            //    Motor myMotor = new Motor();
+            //    Console.WriteLine("How many tires does you motorcycle have?");
+            //    myMotor.tires = Console.ReadLine();
+            //    Console.WriteLine("What registration number does your motorcycle have?");
+            //    myMotor.reg = Console.ReadLine();
+            //    Console.WriteLine("What color is it?");
+            //    myMotor.color = Console.ReadLine();
+            //    Console.WriteLine("How many people fit in your motorcycle?");
+            //    myMotor.space = Console.ReadLine();
+            //    Console.WriteLine("What make is your motorcycle?");
+            //    myMotor.make = Console.ReadLine();
+            //    Console.WriteLine("What did your motorcycle cost in dollars?");
+            //    myMotor.price = Convert.ToInt32(Console.ReadLine());
+            //    Console.WriteLine("How fast does your motorcycle go in km/h?");
+            //    myMotor.speed = Convert.ToInt32(Console.ReadLine());
+
+
+            //}
+            //else if (vehiclepark == "Car")
+            //{
+            //    Car myCar = new Car();
+
+            //}
+            //else if (vehiclepark == "Bus")
+            //{
+            //    Bus myBus = new Bus();
+                
+            //}
+            //else if (vehiclepark == "Truck")
+            //{
+            //    Truck myTruck = new Truck();
+            //}
+            //else if (vehiclepark == "Plane")
+            //{
+            //    Plane myPlane = new Plane();
+            //}
+            //else 
+            //{
+            //    Console.WriteLine("Argh! Please try again!");
+            //}
 
             return new MainMenu();
         }
