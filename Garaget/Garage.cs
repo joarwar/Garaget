@@ -34,6 +34,18 @@ namespace Garaget
             _vehicles.Remove(item);
         }
 
+        public bool SearchVehicle(string regNr)
+        {
+            foreach(T item in _vehicles)
+            {
+                if(item.Number == regNr)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void ListVehicles()
         {
             foreach(T vehicle in _vehicles)
