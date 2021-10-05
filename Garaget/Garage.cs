@@ -10,9 +10,22 @@ namespace Garaget
         public uint ParkingSpots { get; private set; }
         private List<T> _vehicles = new List<T>();
 
+        public T this[int idx] => _vehicles[idx]; // Indexer - Used for returning a value based on a int index
+        public int Count => _vehicles.Count;
+
+        public Garage(uint parkingSpots)
+        {
+            ParkingSpots = parkingSpots;
+        }
+
         public void AddVehicle(T item)
         {
             _vehicles.Add(item);
+        }
+
+        public void RemoveVehicle(T item)
+        {
+            _vehicles.Remove(item);
         }
 
         public void ListVehicles()
@@ -28,25 +41,21 @@ namespace Garaget
             List<string> types = new List<string>();
             foreach(T vehicle in _vehicles)
             {
-                string type = vehicle.GetType().Name;
-                if(types.Contains(type))
+                string vehicleType = vehicle.GetType().Name;
+                if(types.Contains(vehicleType))
                 {
                     continue;
                 }
-                types.Add(type);
+                types.Add(vehicleType);
             }
             foreach(string type in types)
             {
                 Console.WriteLine(type);
             }
         }
-        public T this[int idx] => _vehicles[idx]; // Indexer - Used for returning a value based on a int index
-        public int Count => _vehicles.Count;
+        
 
-        public Garage(uint parkingSpots)
-        {
-            ParkingSpots = parkingSpots;
-        }
+        
 
         #region IEnumerableImplementation
         /*
