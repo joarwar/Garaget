@@ -49,34 +49,42 @@ namespace Garaget
         #region SearchVehicles
         // For the SearchVehicles I've included an extensionclass (found in ObjectExtension.cs)
         // The method takes a property as a string (this is case sensitive)
-        // and matches against a property in the class.
-        // in here we declare a list and first find all the ojbects in the list that has the property at all
-        // then we go through them and check the value
+        // and matches against a property in the class. And then returns the value.
 
+        // in here we declare a list and first find all the objects in the list that has the property at all
+        // then we go through them and check the value
+        /// <summary>
+        /// Search the garage for all vehicles with a matching property and value pair. Input "value" must be of same type
+        /// as the property looked for
+        /// </summary>
+        /// <typeparam name="TType"></typeparam>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
+        /// <returns>A list of vehicles</returns>
         public List<T> SearchVehicles<TType>(string property, TType value)
         {
-            List<T> returnList = new List<T>();
-            foreach(T item in _vehicles)
+            List<T> returnList = new List<T>(); // create list to be sent from method
+            foreach(T item in _vehicles) // go through all entries in the list
             {
-                if(!HasProperty(item, property))
+                if(!HasProperty(item, property)) // check if the entry has the property we are looking for
                 {
-                    continue;
+                    continue; // if it does not, we continue to the next entry
                 }
-                
-                TType val = item.GetPropValue<TType>(property);
-                if(val.Equals(value))
+                // if it has the property we continue
+                TType val = item.GetPropValue<TType>(property); // we store the value of the property of
+                if(val.Equals(value)) // and check if it is the same value as what was passed in
                 {
-                    returnList.Add(item);
+                    returnList.Add(item); // if it is, we store it in the list
                 }
             }
-            return returnList;
+            return returnList; // and we return the list
         }
 
         // checks a specific item if it has a property at all.
+        // this utilizes the fact that if the property does not exist, C# returns null.
         private bool HasProperty(T item, string propertyName)
         {
-            Type obj = item.GetType();
-            return obj.GetProperty(propertyName) != null;
+            return item.GetType().GetProperty(propertyName) != null;
         }
         #endregion
 
