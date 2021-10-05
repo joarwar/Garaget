@@ -8,5 +8,6 @@ namespace Garaget
 {
     class Vehicles
     {
+        public string Number { get; set; }
     }
 }
