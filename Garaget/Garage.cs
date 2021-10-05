@@ -18,9 +18,15 @@ namespace Garaget
             ParkingSpots = parkingSpots;
         }
 
-        public void AddVehicle(T item)
+        public bool AddVehicle(T item)
         {
+            if(_vehicles.Count == ParkingSpots)
+            {
+                Console.WriteLine("Garage is full, vehicle not parked");
+                return false;
+            }
             _vehicles.Add(item);
+            return true;
         }
 
         public void RemoveVehicle(T item)
