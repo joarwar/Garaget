@@ -53,13 +53,13 @@ namespace Garaget
         // in here we declare a list and first find all the ojbects in the list that has the property at all
         // then we go through them and check the value
 
-        public List<T> SearchVehicles<U>(string property, U value)
+        public List<T> SearchVehicles<TType>(string property, TType value)
         {
             List<T> vehiclesWithProperty = GetVehiclesWithProperty(property);
             List<T> returnList = new List<T>();
             foreach(T item in vehiclesWithProperty)
             {
-                U val = item.GetPropValue<U>(property);
+                TType val = item.GetPropValue<TType>(property);
                 if(val.Equals(value))
                 {
                     returnList.Add(item);
