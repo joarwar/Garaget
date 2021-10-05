@@ -21,7 +21,7 @@ namespace Garaget
             // Handle input
             string vehiclepark = Console.ReadLine();
             
-            // Alternativ göra en array istället för att skapa flera fordo.
+            // Alternativ göra en array istället för att skapa flera fordon.
             //if (vehiclepark == "Motorcycle")
             //{
                 
