@@ -25,13 +25,13 @@ namespace Garaget
 
         public override bool HandleInput()
         {
-            int input;
-            while(int.TryParse(Console.ReadLine(), out input))
+            uint input;
+            while(!uint.TryParse(Console.ReadLine(), out input))
             {
-
+                
             }
 
-            Garage garage = new Garage(input);
+            Garage<Vehicles> garage = new Garage<Vehicles>(input);
 
             return true;
         }
