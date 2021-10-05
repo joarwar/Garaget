@@ -55,10 +55,14 @@ namespace Garaget
 
         public List<T> SearchVehicles<TType>(string property, TType value)
         {
-            List<T> vehiclesWithProperty = GetVehiclesWithProperty(property);
             List<T> returnList = new List<T>();
-            foreach(T item in vehiclesWithProperty)
+            foreach(T item in _vehicles)
             {
+                if(!HasProperty(item, property))
+                {
+                    continue;
+                }
+                
                 TType val = item.GetPropValue<TType>(property);
                 if(val.Equals(value))
                 {
@@ -73,21 +77,6 @@ namespace Garaget
         {
             Type obj = item.GetType();
             return obj.GetProperty(propertyName) != null;
-        }
-
-        // goes through all items in the _vehicles list and checks creates a new list if they have
-        // the property we are looking for.
-        private List<T> GetVehiclesWithProperty(string property)
-        {
-            List<T> returnList = new List<T>();
-            foreach(T item in _vehicles)
-            {
-                if(HasProperty(item, property))
-                {
-                    returnList.Add(item);
-                }
-            }
-            return returnList;
         }
         #endregion
 
