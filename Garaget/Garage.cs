@@ -1,13 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace Garaget
 {
-    //interface IEnumerator<T>
-    //{
-    //    void ListVehicles(T item);
-    //    void AddVehicle(T item);
-    //}
 
     class Garage <T> : IEnumerable<T> where T : Vehicles
     {
@@ -19,6 +15,14 @@ namespace Garaget
             _vehicles.Add(item);
         }
 
+        public void ListVehicles()
+        {
+            foreach(Vehicles vehicle in _vehicles)
+            {
+                Console.WriteLine(vehicle);
+            }
+        }
+
         public T this[int idx] => _vehicles[idx]; // Indexer - Used for returning a value based on a int index
         public int Count => _vehicles.Count;
 
@@ -27,12 +31,14 @@ namespace Garaget
             ParkingSpots = parkingSpots;
         }
 
-        // returning the Enumerator of the List _vehicles.
-        // In order to use this,
+        #region IEnumerableImplementation
         /*
-         * Instantiate IEnumerator<Vehicles> vehi = garaget.GetEnumerator();
-         * while()
-         */
+         returning the Enumerator of the List _vehicles.
+         In order to use this,
+        
+         Instantiate IEnumerator<Vehicles> vehi = garaget.GetEnumerator();
+         while()
+        */
         public IEnumerator<T> GetEnumerator()
         {
             return _vehicles.GetEnumerator();
@@ -49,5 +55,6 @@ namespace Garaget
         {
             return GetEnumerator();
         }
+        #endregion
     }
 }
