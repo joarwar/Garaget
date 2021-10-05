@@ -17,12 +17,29 @@ namespace Garaget
 
         public void ListVehicles()
         {
-            foreach(Vehicles vehicle in _vehicles)
+            foreach(T vehicle in _vehicles)
             {
                 Console.WriteLine(vehicle);
             }
         }
 
+        public void ListTypesOfVehicles()
+        {
+            List<string> types = new List<string>();
+            foreach(T vehicle in _vehicles)
+            {
+                string type = vehicle.GetType().Name;
+                if(types.Contains(type))
+                {
+                    continue;
+                }
+                types.Add(type);
+            }
+            foreach(string type in types)
+            {
+                Console.WriteLine(type);
+            }
+        }
         public T this[int idx] => _vehicles[idx]; // Indexer - Used for returning a value based on a int index
         public int Count => _vehicles.Count;
 
