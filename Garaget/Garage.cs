@@ -46,6 +46,86 @@ namespace Garaget
             return false;
         }
 
+        #region SearchVehicles
+        // For the SearchVehicles I've included an extensionclass (found in ObjectExtension.cs)
+        // There are three overloaded versions, one for string, one for bool and one for int.
+        // They basicly do the same thing. All of them takes a property as a string (this is case sensitive)
+        // and matches against a property in the class.
+
+        // Stringversion takes a string "value" and matches.
+        public List<T> SearchVehicles(string property, string value)
+        {
+            List<T> returnList = new List<T>();
+            foreach(T item in _vehicles)
+            {
+                // val here is null if the property is not found or the value is not set.
+                string val = item.GetPropValue<string>(property);
+                if(val != null && val == value)
+                {
+                    returnList.Add(item);
+                }
+            }
+            return returnList;
+        }
+
+        // the int version I had to do a bit of a workaround.
+        // in here we declare a list and first find all the ojbects in the list that has the property at all
+        // then we go through them and check the value
+        // this implementation is a bit slower than the string version but I think we are safe ;)
+        public List<T> SearchVehicles(string property, int value)
+        {
+            List<T> vehiclesWithProperty = GetVehiclesWithProperty(property);
+            List<T> returnList = new List<T>();
+            foreach(T item in vehiclesWithProperty)
+            {
+                int val = item.GetPropValue<int>(property);
+                if(val == value)
+                {
+                    returnList.Add(item);
+                }
+            }
+            return returnList;
+        }
+
+        // works similar as the "int" version
+        public List<T> SearchVehicles(string property, bool value)
+        {
+            List<T> vehiclesWithProperty = GetVehiclesWithProperty(property);
+            List<T> returnList = new List<T>();
+            foreach(T item in vehiclesWithProperty)
+            {
+                bool val = item.GetPropValue<bool>(property);
+                if(val == value)
+                {
+                    returnList.Add(item);
+                }
+            }
+            return returnList;
+        }
+
+        // checks a specific item if it has a property at all.
+        private bool HasProperty(T item, string propertyName)
+        {
+            Type obj = item.GetType();
+            return obj.GetProperty(propertyName) != null;
+        }
+
+        // goes through all items in the _vehicles list and checks creates a new list if they have
+        // the property we are looking for.
+        private List<T> GetVehiclesWithProperty(string property)
+        {
+            List<T> returnList = new List<T>();
+            foreach(T item in _vehicles)
+            {
+                if(HasProperty(item, property))
+                {
+                    returnList.Add(item);
+                }
+            }
+            return returnList;
+        }
+        #endregion
+
         public void ListVehicles()
         {
             foreach(T vehicle in _vehicles)
@@ -72,8 +152,8 @@ namespace Garaget
             }
         }
         
-
         
+
 
         #region IEnumerableImplementation
         /*
