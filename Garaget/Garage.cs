@@ -46,7 +46,6 @@ namespace Garaget
             return false;
         }
 
-        #region SearchVehicles
         // For the SearchVehicles I've included an extensionclass (found in ObjectExtension.cs)
         // The method takes a property as a string (this is case sensitive)
         // and matches against a property in the class. And then returns the value.
@@ -66,7 +65,7 @@ namespace Garaget
             List<T> returnList = new List<T>(); // create list to be sent from method
             foreach(T item in _vehicles) // go through all entries in the list
             {
-                if(!HasProperty(item, property)) // check if the entry has the property we are looking for
+                if(item.HasProperty(property)) // check if the entry has the property we are looking for
                 {
                     continue; // if it does not, we continue to the next entry
                 }
@@ -79,14 +78,6 @@ namespace Garaget
             }
             return returnList; // and we return the list
         }
-
-        // checks a specific item if it has a property at all.
-        // this utilizes the fact that if the property does not exist, C# returns null.
-        private bool HasProperty(T item, string propertyName)
-        {
-            return item.GetType().GetProperty(propertyName) != null;
-        }
-        #endregion
 
         public void ListVehicles()
         {

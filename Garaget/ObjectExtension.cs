@@ -5,9 +5,17 @@ namespace Garaget
 {
     public static class ObjectExtension
     {
-        // Extension copied from
+
+        // checks a specific item if it has a property at all.
+        // this utilizes the fact that if the property does not exist, C# returns null.
+        public static bool HasProperty(this Object item, string propertyName)
+        {
+            return item.GetType().GetProperty(propertyName) != null;
+        }
+
+        // The following two method extensions are copied from
         // https://stackoverflow.com/questions/1196991/get-property-value-from-string-using-reflection
-        
+
         public static Object GetPropValue(this Object obj, String name)
         {
             foreach(String part in name.Split('.'))
