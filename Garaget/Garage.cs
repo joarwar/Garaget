@@ -65,7 +65,7 @@ namespace Garaget
             List<T> returnList = new List<T>(); // create list to be sent from method
             foreach(T item in _vehicles) // go through all entries in the list
             {
-                if(item.HasProperty(property)) // check if the entry has the property we are looking for
+                if(!item.HasProperty(property)) // check if the entry has the property we are looking for
                 {
                     continue; // if it does not, we continue to the next entry
                 }
