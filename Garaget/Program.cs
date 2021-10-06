@@ -4,8 +4,11 @@ namespace Garaget
 {
     class Program
     {
+        public static Garage<Vehicles> garage;
+
         static void Main(string[] args)
         {
+            
             Menu currentMenu = new MainMenu();
             while(true)
             {

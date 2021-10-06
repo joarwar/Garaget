@@ -31,7 +31,7 @@ namespace Garaget
                 
             }
 
-            Garage<Vehicles> garage = new Garage<Vehicles>(input);
+            Program.garage = new Garage<Vehicles>(input);
 
             return true;
         }
