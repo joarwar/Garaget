@@ -19,28 +19,28 @@ namespace Garaget
                           + "\n5. Plane"
                           + "\n0. Back to Main menu");
             // Handle input
-            string vehiclepark = Console.ReadLine();
+            int vehiclepark = Console.ReadLine();
 
-            if (vehiclepark == "Motorcycle")
+            if (vehiclepark == 1)
             {
                 ParkMotorcycle();
 
             }
-            else if (vehiclepark == "Car")
+            else if (vehiclepark == 2)
             {
                 ParkCar();
 
             }
-            else if (vehiclepark == "Bus")
+            else if (vehiclepark == 3)
             {
                 ParkBus();
 
             }
-            else if (vehiclepark == "Truck")
+            else if (vehiclepark == 4)
             {
                 ParkTruck();
             }
-            else if (vehiclepark == "Plane")
+            else if (vehiclepark == 5)
             {
                 ParkPlane();
             }
@@ -52,129 +52,137 @@ namespace Garaget
                           + "\n4. Truck"
                           + "\n5. Plane"
                           + "\n0. Back to Main menu");
-            }
 
-            return new MainMenu();
+                
+            }
+            return null;
+
         }
 
-        private void ParkPlane()
-        {
-            Object[] basicValues = SetBasicValues();           
-            Console.WriteLine("How many wings does your plane have?");
-            uint planewings;
-            while (!uint.TryParse(Console.ReadLine(), out planewings))
-            {
-
-            }
-            Console.WriteLine("Is it a private plane?");          
-            bool isprivate;
-            while (!bool.TryParse(Console.ReadLine(), out isprivate))
-            {
-
-            }
-            Plane myPlane = new Plane(planewings, isprivate, basicValues[0]);
-        }
-
-        private void ParkTruck()
-        {
-            Object[] basicValues = SetBasicValues();
-            Console.WriteLine("Is it a pickup?");
-            bool ispickup;
-            while (!bool.TryParse(Console.ReadLine(), out ispickup))
-            {
-
-            }
-            Console.WriteLine("From what year is the truck from?"); 
-            uint truckyear;
-            while (!uint.TryParse(Console.ReadLine(), out truckyear))
-            {
-
-            }
-            Truck myTruck = new Truck(ispickup, truckyear, basicValues[0]);
-        }
-
-        private void ParkBus()
-        {
-            Object[] basicValues = SetBasicValues();
-            Console.WriteLine("Is it a school bus?");
-            bool isschoolbus;
-            while (!bool.TryParse(Console.ReadLine(), out isschoolbus))
-            {
-
-            }
-
-            Console.WriteLine("How many floors does your bus have?");
-            uint floor;
-            while (!bool.TryParse(Console.ReadLine(), out floor))
-            {
-
-            }
-            Bus myBus = new Bus(isschoolbus, floor, basicValues[0]);
-        }
-
-        private void ParkCar()
-        {
-
-            Object[] basicValues = SetBasicValues();
-            Console.WriteLine("What fuel does your car use?");
-            string fuel = Console.ReadLine();
-            Console.WriteLine("Is your car a cabriolet?");
-            bool iscabriolet;
-            while (!bool.TryParse(Console.ReadLine(), out iscabriolet))
-            {
-
-            }
-            Car myCar = new Car(fuel, iscabriolet, basicValues[0]);
-        }
-
-        private void ParkMotorcycle()
-        {
-            Object[] basicValues = SetBasicValues();
-            Console.WriteLine("What did your motorcycle cost in dollars?");
-            uint price;
-            while (!bool.TryParse(Console.ReadLine(), out price))
-            {
-
-            }
-            Console.WriteLine("How fast does your motorcycle go in km/h?");
-            string km = Console.ReadLine();
-            Motor myMotor = new Motor(price, km, basicValues[0]);
-        }
-
-        private Object[] SetBasicValues()
-        {
-            var array = new Object[5];
-            Console.WriteLine("How many tires does you vehicles have?");
-           
-            uint vehicletires;
-            while (!uint.TryParse(Console.ReadLine(), out vehicletires))
-            {
-
-            }
-            array[0] = vehicletires;
-            Console.WriteLine("What registration number does your vehicle have?");
-            string reg = Console.ReadLine();
-            array[1] = reg;
-            Console.WriteLine("What color is it?");
-            string color = Console.ReadLine();
-            array[2] = color;
-            Console.WriteLine("How many people fit in your vehicle?");          
-            uint space;
-            while (!uint.TryParse(Console.ReadLine(), out space))
-            {
-
-            }
-            array[3] = space;
-            Console.WriteLine("What make is your vehicle?");
-            string make = Console.ReadLine();
-            array[4] = make;
-           
-            return array;
-        }
 
         public override bool HandleInput()
         {
-            throw new NotImplementedException();
+
+
+            private void ParkPlane()
+            {
+                Object[] basicValues = SetBasicValues();
+                Console.WriteLine("How many wings does your plane have?");
+                uint PlaneWings;
+                while (!uint.TryParse(Console.ReadLine(), out PlaneWings))
+                {
+
+                }
+                Console.WriteLine("Is it a private plane?");
+                bool IsPrivate;
+                while (!bool.TryParse(Console.ReadLine(), out IsPrivate))
+                {
+
+                }
+                Plane myPlane = new Plane(PlaneWings, IsPrivate, basicValues[0]);
+            }
+
+            private void ParkTruck()
+            {
+                Object[] basicValues = SetBasicValues();
+                Console.WriteLine("Is it a pickup?");
+                bool IsPickup;
+                while (!bool.TryParse(Console.ReadLine(), out IsPickup))
+                {
+
+                }
+                Console.WriteLine("From what year is the truck from?");
+                uint TruckYear;
+                while (!uint.TryParse(Console.ReadLine(), out TruckYear))
+                {
+
+                }
+                Truck myTruck = new Truck(IsPickup, TruckYear, basicValues[0]);
+            }
+
+            private void ParkBus()
+            {
+                Object[] basicValues = SetBasicValues();
+                Console.WriteLine("Is it a school bus?");
+                bool IsSchoolbus;
+                while (!bool.TryParse(Console.ReadLine(), out IsSchoolbus))
+                {
+
+                }
+
+                Console.WriteLine("How many floors does your bus have?");
+                uint Floor;
+                while (!bool.TryParse(Console.ReadLine(), out Floor))
+                {
+
+                }
+                Bus myBus = new Bus(IsSchoolbus, Floor, basicValues[0]);
+            }
+
+            private void ParkCar()
+            {
+
+                Object[] basicValues = SetBasicValues();
+                Console.WriteLine("What fuel does your car use?");
+                string Fuel = Console.ReadLine();
+
+                Console.WriteLine("Is your car a cabriolet?");
+                bool IsCabriolet;
+                while (!bool.TryParse(Console.ReadLine(), out IsCabriolet))
+                {
+
+                }
+                Car myCar = new Car(Fuel, IsCabriolet, basicValues[0]);
+            }
+
+            private void ParkMotorcycle()
+            {
+                Object[] basicValues = SetBasicValues();
+                Console.WriteLine("What did your motorcycle cost in dollars?");
+                uint Price;
+                while (!bool.TryParse(Console.ReadLine(), out Price))
+                {
+
+                }
+                Console.WriteLine("How fast does your motorcycle go in km/h?");
+                string Km = Console.ReadLine();
+                Motor myMotor = new Motor(Price, Km, basicValues[0]);
+            }
+
+            private Object[] SetBasicValues()
+            {
+                var array = new Object[5];
+                Console.WriteLine("How many tires does you vehicles have?");
+
+                uint VehicleTires;
+                while (!uint.TryParse(Console.ReadLine(), out VehicleTires))
+                {
+
+                }
+                array[0] = VehicleTires;
+
+                Console.WriteLine("What registration number does your vehicle have?");
+                string Reg = Console.ReadLine();
+                array[1] = Reg;
+                Console.WriteLine("What color is it?");
+                string Color = Console.ReadLine();
+                array[2] = Color;
+                Console.WriteLine("How many people fit in your vehicle?");
+                uint Space;
+                while (!uint.TryParse(Console.ReadLine(), out Space))
+                {
+
+                }
+                array[3] = Space;
+                Console.WriteLine("What make is your vehicle?");
+                string Make = Console.ReadLine();
+                array[4] = Make;
+
+                return array;
+                //return MainMenu;
+              
+            }
+
         }
     }
 }

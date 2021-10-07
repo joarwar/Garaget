@@ -24,8 +24,8 @@ namespace Garaget
             
             do
             {
-                int casemenu = ParseInput(Console.ReadLine(), 4);
-                switch (casemenu)
+                int caseMenu = ParseInput(Console.ReadLine(), 7);
+                switch (caseMenu)
                 {
                     case 1:
                         return new GarageCreationMenu();
@@ -47,6 +47,7 @@ namespace Garaget
                 }
 
             } while (cont == true);
+
             return null;
 
 
