@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using Newtonsoft.Json;
 
 namespace Garaget
 {
-
+    [JsonObject]
     class Garage <T> : IEnumerable<T> where T : Vehicles
     {
         public uint ParkingSpots { get; private set; }
-        private List<T> _vehicles = new List<T>();
+        public List<T> _vehicles;
 
         public T this[int idx] => _vehicles[idx]; // Indexer - Used for returning a value based on a int index
         public int Count => _vehicles.Count;
@@ -16,6 +17,7 @@ namespace Garaget
         public Garage(uint parkingSpots)
         {
             ParkingSpots = parkingSpots;
+            _vehicles = new List<T>();
         }
 
         public bool AddVehicle(T item)
