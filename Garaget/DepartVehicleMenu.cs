@@ -27,7 +27,7 @@ namespace Garaget
         {
             //når inte listan
 
-            Program.garage.RemoveVehicle(Program.garage.ListVehicles().Select));        
+            Program.garage.RemoveVehicle(Program.garage.ListVehicles().Select);    
             types.RemoveAt(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine("Drive safely!");
 
