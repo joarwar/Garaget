@@ -17,9 +17,9 @@ namespace Garaget
                     + "\n4. Search vehicles." // searches all vehicles through properties
                     + "\n5. Depart vehicle from garage." // removes vehicle from garage
                     + "\n6. Exit application.");
-                //HandleInput();
-                //return new ParkVehicleMenu();
-
+            //HandleInput();
+            //return new ParkVehicleMenu();
+           
 
             
             do
@@ -38,6 +38,7 @@ namespace Garaget
                     case 5:
                         return new DepartVehicleMenu();
                     case 6:
+                    //application exit.Application
                         cont = false;
                         return new ExitMenu();
                     default:

@@ -46,12 +46,13 @@ namespace Garaget
             return false;
         }
 
-        public void ListVehicles()
+        public List<T> ListVehicles()
         {
-            foreach(T vehicle in _vehicles)
-            {
-                Console.WriteLine(vehicle);
-            }
+            //foreach(T vehicle in _vehicles)
+            //{
+            //    Console.WriteLine(vehicle);
+            //}
+            return _vehicles;
         }
 
         public void ListTypesOfVehicles()
