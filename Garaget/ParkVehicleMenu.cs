@@ -74,7 +74,8 @@ namespace Garaget
 
         private void ParkPlane()
         {
-            Object[] basicValues = SetBasicValues();
+
+
             Console.WriteLine("How many wings does your plane have?");
             uint planeWings;
             while (!uint.TryParse(Console.ReadLine(), out planeWings))
@@ -87,12 +88,19 @@ namespace Garaget
             {
 
             }
-            Plane myPlane = new Plane(planeWings, isPrivate, basicValues[0]);
+            Plane myPlane = new Plane(
+                GetTires(),
+                GetRegisterNumber(),
+                GetColor(),
+                GetSpace(),
+                GetBrand(),
+                planeWings, isPrivate);
+            Program.garage.AddVehicle(myPlane);
         }
 
         private void ParkTruck()
         {
-            Object[] basicValues = SetBasicValues();
+
             Console.WriteLine("Is it a pickup?");
             bool isPickup;
             while (!bool.TryParse(Console.ReadLine(), out isPickup))
@@ -100,17 +108,25 @@ namespace Garaget
 
             }
             Console.WriteLine("From what year is the truck from?");
-            uint truckYear;
-            while (!uint.TryParse(Console.ReadLine(), out truckYear))
+            int truckYear;
+            while (!int.TryParse(Console.ReadLine(), out truckYear))
             {
 
             }
-            Truck myTruck = new Truck(isPickup, truckYear, basicValues[0]);
+            Truck myTruck = new Truck(
+                    GetTires(),
+                    GetRegisterNumber(),
+                    GetColor(),
+                    GetSpace(),
+                    GetBrand(),
+                    isPickup, truckYear);
+            Program.garage.AddVehicle(myTruck);
+
+
         }
 
         private void ParkBus()
         {
-            Object[] basicValues = SetBasicValues();
             Console.WriteLine("Is it a school bus?");
             bool isSchoolbus;
             while (!bool.TryParse(Console.ReadLine(), out isSchoolbus))
@@ -119,18 +135,27 @@ namespace Garaget
             }
 
             Console.WriteLine("How many floors does your bus have?");
-            uint floor;
-            while (!bool.TryParse(Console.ReadLine(), out floor))
+            int floor;
+            while (!int.TryParse(Console.ReadLine(), out floor))
             {
 
             }
-            Bus myBus = new Bus(isSchoolbus, floor, basicValues[0]);
+            Bus myBus = new Bus(
+                 GetTires(),
+                 GetRegisterNumber(),
+                 GetColor(),
+                 GetSpace(),
+                 GetBrand(),
+                 isSchoolbus, floor);
+            Program.garage.AddVehicle(myBus);
+
+            
+
         }
 
         private void ParkCar()
         {
-
-            Object[] basicValues = SetBasicValues();
+            
             Console.WriteLine("What fuel does your car use?");
             string fuel = Console.ReadLine();
 
@@ -140,53 +165,79 @@ namespace Garaget
             {
 
             }
-            Car myCar = new Car(fuel, isCabriolet, basicValues[0]);
+            Car myCar = new Car(
+                 GetTires(),
+                 GetRegisterNumber(),
+                 GetColor(),
+                 GetSpace(),
+                 GetBrand(),
+                 fuel, isCabriolet);
+            Program.garage.AddVehicle(myCar);
+                
+                
         }
 
         private void ParkMotorcycle()
         {
-            Object[] basicValues = SetBasicValues();
             Console.WriteLine("What did your motorcycle cost in dollars?");
             uint price;
-            while (!bool.TryParse(Console.ReadLine(), out price))
+            while (!uint.TryParse(Console.ReadLine(), out price))
             {
 
             }
             Console.WriteLine("How fast does your motorcycle go in km/h?");
             string km = Console.ReadLine();
-            Motor myMotor = new Motor(price, km, basicValues[0]);
+            Motorcycle myMotor = new Motorcycle(
+                 GetTires(),
+                 GetRegisterNumber(),
+                 GetColor(),
+                 GetSpace(),
+                 GetBrand(),
+                 km, price);
+            Program.garage.AddVehicle(myMotor);
         }
 
-        private Object[] SetBasicValues()
+        private uint GetTires()
         {
-            var array = new Object[5];
             Console.WriteLine("How many tires does you vehicles have?");
 
-            uint vehicletires;
-            while (!uint.TryParse(Console.ReadLine(), out vehicletires))
+            uint vehicleTires;
+            while (!uint.TryParse(Console.ReadLine(), out vehicleTires))
             {
 
             }
-            array[0] = vehicletires;
+            return vehicleTires;
+        }
 
+        private string GetRegisterNumber()
+        {
             Console.WriteLine("What registration number does your vehicle have?");
-            string reg = Console.ReadLine();
-            array[1] = reg;
+
+            return Console.ReadLine();
+
+        }
+
+        private string GetColor()
+        {
             Console.WriteLine("What color is it?");
-            string color = Console.ReadLine();
-            array[2] = color;
+            return Console.ReadLine();
+        }
+
+        private uint GetSpace()
+        {
             Console.WriteLine("How many people fit in your vehicle?");
             uint space;
             while (!uint.TryParse(Console.ReadLine(), out space))
             {
 
             }
-            array[3] = space;
-            Console.WriteLine("What make is your vehicle?");
-            string brand = Console.ReadLine();
-            array[4] = brand;
-
-            return array;
+            return space;
+        }
+        private string GetBrand()
+        {
+            Console.WriteLine("What brand is your vehicle?");
+            return Console.ReadLine();
         }
     }
+}
 }

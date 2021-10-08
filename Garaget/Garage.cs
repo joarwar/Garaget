@@ -40,7 +40,7 @@ namespace Garaget
         {
             foreach(T item in _vehicles)
             {
-                if(item.Number == regNr)
+                if(item.RegisterNumber == regNr)
                 {
                     return true;
                 }
