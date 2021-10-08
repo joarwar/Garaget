@@ -2,11 +2,33 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Garaget.FileManagement
 {
     class JSONWrapper
     {
+
+        public void SaveState(string path)
+        {
+            JObject writeObject = JObject.FromObject(Program.garage);
+            using(StreamWriter file = new StreamWriter(path, false, Encoding.GetEncoding("ISO-8859-1")))
+            using(JsonTextWriter writer = new JsonTextWriter(file))
+            {
+                writer.Formatting = Formatting.Indented;
+                writeObject.WriteTo(writer);
+            }
+        }
+
+        public void RestoreState(string path)
+        {
+            using(StreamReader file = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
+            {
+                var deserializedObject = JsonConvert.DeserializeObject<Garage<Vehicles>>(file.ReadToEnd());
+                Program.garage = deserializedObject;
+            }
+        }
+
         public JArray GetJObjects<T>(List<T> objects)
         {
             JArray jArray = new JArray();
