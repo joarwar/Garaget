@@ -9,8 +9,8 @@ namespace Garaget
     class Bus : Vehicle
     {
         public bool IsSchoolBus { get; set; }
-        public int Floor { get; set; }
-        public Bus(uint tires, string registerNumber, string color, uint space, string brand, bool isSchoolBus, int floor) : base(tires, registerNumber, color, space, brand)
+        public uint Floor { get; set; }
+        public Bus(uint tires, string registerNumber, string color, uint space, string brand, bool isSchoolBus, uint floor) : base(tires, registerNumber, color, space, brand)
         {
             IsSchoolBus = isSchoolBus;
             Floor = floor;

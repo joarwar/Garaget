@@ -17,15 +17,15 @@ namespace Garaget
                           + "\n3. Bus"
                           + "\n4. Truck"
                           + "\n5. Plane"
-                          + "\n0. Back to Main menu");
+                          + "\n6. Back to Main menu");
             while (!HandleInput())
             {
-                Console.WriteLine("Argh! Please try again! Type one of the vehicles: \n 1.Motorcycle"
+                Console.WriteLine("Argh! Please try again! Type one of the vehicles:\n1. Motorcycle"
                 + "\n2. Car"
                 + "\n3. Bus"
                 + "\n4. Truck"
                 + "\n5. Plane"
-                + "\n0. Back to Main menu");
+                + "\n6. Back to Main menu");
             }
 
 
@@ -35,44 +35,38 @@ namespace Garaget
 
         public override bool HandleInput()
         {
-            int vehiclepark = ParseInput(Console.ReadLine(), 5);
-
-            if (vehiclepark == 1)
-            {
-                ParkMotorcycle();
-
-            }
-            else if (vehiclepark == 2)
-            {
-                ParkCar();
-
-            }
-            else if (vehiclepark == 3)
-            {
-                ParkBus();
-
-            }
-            else if (vehiclepark == 4)
-            {
-                ParkTruck();
-            }
-            else if (vehiclepark == 5)
-            {
-                ParkPlane();
-            }
-            //else if (vehiclepark == 0)
-            //{
-            //    return MainMenu;
-            //}
-
-            else
+            do
             {
 
-                return false;
-            }
-            
-            return true;
+                int parkMenu = ParseInput(Console.ReadLine(), 6);
+                switch (parkMenu)
+                {
+                    case 1:
+                        ParkMotorcycle();
+                        break;
+                    case 2:
+                        ParkCar();
+                        break;
+                    case 3:
+                        ParkBus();
+                        break;
+                    case 4:
+                        ParkTruck();
+                        break;
+                    case 5:
+                        ParkPlane();
+                        break;
+                    case 6:
+                        return true;
+                    default:
+                        
+                        cont = false;
+                        break;
+                }
 
+               
+            } while (cont);
+            return false;
 
 
         }
@@ -85,13 +79,13 @@ namespace Garaget
             uint planeWings;
             while (!uint.TryParse(Console.ReadLine(), out planeWings))
             {
-
+                Console.WriteLine("Please only write numbers!");
             }
-            Console.WriteLine("Is it a private plane?");
+            Console.WriteLine("Is it a private plane? (True/False)");
             bool isPrivate;
             while (!bool.TryParse(Console.ReadLine(), out isPrivate))
             {
-
+                Console.WriteLine("Please specify through either true or false.");
             }
             Plane myPlane = new Plane(
                 GetTires(),
@@ -101,22 +95,23 @@ namespace Garaget
                 GetBrand(),
                 planeWings, isPrivate);
             Program.garage.AddVehicle(myPlane);
+
         }
 
         private void ParkTruck()
         {
 
-            Console.WriteLine("Is it a pickup?");
+            Console.WriteLine("Is it a pickup? (True/False)");
             bool isPickup;
             while (!bool.TryParse(Console.ReadLine(), out isPickup))
             {
-
+                Console.WriteLine("Please specify through either true or false.");
             }
             Console.WriteLine("From what year is the truck from?");
             int truckYear;
             while (!int.TryParse(Console.ReadLine(), out truckYear))
             {
-
+                Console.WriteLine("Please only write numbers!");
             }
             Truck myTruck = new Truck(
                     GetTires(),
@@ -132,18 +127,18 @@ namespace Garaget
 
         private void ParkBus()
         {
-            Console.WriteLine("Is it a school bus?");
+            Console.WriteLine("Is it a school bus? (True/False)");
             bool isSchoolbus;
             while (!bool.TryParse(Console.ReadLine(), out isSchoolbus))
             {
-
+                Console.WriteLine("Please specify through either true or false.");
             }
 
             Console.WriteLine("How many floors does your bus have?");
-            int floor;
-            while (!int.TryParse(Console.ReadLine(), out floor))
+            uint floor;
+            while (!uint.TryParse(Console.ReadLine(), out floor))
             {
-
+                Console.WriteLine("Please only write numbers highter than 0!");
             }
             Bus myBus = new Bus(
                  GetTires(),
@@ -154,21 +149,21 @@ namespace Garaget
                  isSchoolbus, floor);
             Program.garage.AddVehicle(myBus);
 
-            
+
 
         }
 
         private void ParkCar()
         {
-            
+
             Console.WriteLine("What fuel does your car use?");
             string fuel = Console.ReadLine();
 
-            Console.WriteLine("Is your car a cabriolet?");
+            Console.WriteLine("Is your car a cabriolet? (True/False)");
             bool isCabriolet;
             while (!bool.TryParse(Console.ReadLine(), out isCabriolet))
             {
-
+                Console.WriteLine("Please specify through either true or false.");
             }
             Car myCar = new Car(
                  GetTires(),
@@ -178,8 +173,8 @@ namespace Garaget
                  GetBrand(),
                  fuel, isCabriolet);
             Program.garage.AddVehicle(myCar);
-                
-                
+
+
         }
 
         private void ParkMotorcycle()
@@ -188,13 +183,13 @@ namespace Garaget
             decimal price;
             while (!decimal.TryParse(Console.ReadLine(), out price))
             {
-
+                Console.WriteLine("Please only write numbers!");
             }
             Console.WriteLine("How fast does your motorcycle go in km/h?");
             uint cylinder;
             while (!uint.TryParse(Console.ReadLine(), out cylinder))
             {
-
+                Console.WriteLine("Please only write numbers highter than 0!");
             }
             Motorcycle myMotor = new Motorcycle(
                  GetTires(),
@@ -213,7 +208,7 @@ namespace Garaget
             uint vehicleTires;
             while (!uint.TryParse(Console.ReadLine(), out vehicleTires))
             {
-
+                Console.WriteLine("Please only write numbers highter than 0!");
             }
             return vehicleTires;
         }
@@ -238,7 +233,7 @@ namespace Garaget
             uint space;
             while (!uint.TryParse(Console.ReadLine(), out space))
             {
-
+                Console.WriteLine("Please only write numbers highter than 0!");
             }
             return space;
         }

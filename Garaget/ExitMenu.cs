@@ -18,38 +18,17 @@ namespace Garaget
 
         public override Menu ShowMenu()
         {
-            Console.WriteLine("Select option:"+
-                "\n1. Quit"+
-                "\n0. Return to main menu");
+            Console.WriteLine("Thank you for using our garage");
             HandleInput();
-            return new MainMenu();
+            return null;
         }
 
         public override bool HandleInput()
         {
-            int selection;
-            do
-            {
-                Console.WriteLine("Enter your choice");
-                selection = ParseInput(Console.ReadLine(), AmountOfMenuItems);
-            } while(selection >= 0 && selection <= AmountOfMenuItems);
-            switch(selection)
-            {
-                case 1:
-                    NextMenu = new MainMenu();
-                    break;
-                case 2:
-                    ApplicationQuit();
-                    break;
-                default:
-                    break;
-            }
-            return true;
+
+            Environment.Exit(0);
+            return false;
         }
 
-        private void ApplicationQuit()
-        {
-            Environment.Exit(0);
-        }
     }
 }
