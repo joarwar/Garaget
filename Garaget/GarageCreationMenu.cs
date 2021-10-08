@@ -26,7 +26,7 @@ namespace Garaget
                 
             }
 
-            Program.garage = new Garage<Vehicles>(input);
+            Program.garage = new Garage<Vehicle>(input);
 
             Console.WriteLine("You've now made a garage with " + input + " spots.");
             Console.ReadLine();

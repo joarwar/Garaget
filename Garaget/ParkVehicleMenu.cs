@@ -183,8 +183,8 @@ namespace Garaget
             }
             array[3] = space;
             Console.WriteLine("What make is your vehicle?");
-            string make = Console.ReadLine();
-            array[4] = make;
+            string brand = Console.ReadLine();
+            array[4] = brand;
 
             return array;
         }
