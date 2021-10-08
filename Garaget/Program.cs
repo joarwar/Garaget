@@ -4,8 +4,6 @@ namespace Garaget
 {
     class Program
     {
-        public static Garage<Vehicles> garage;
-
         static void Main(string[] args)
         {
             
