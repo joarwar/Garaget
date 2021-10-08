@@ -8,10 +8,15 @@ namespace Garaget.FileManagement
 {
     class JSONWrapper
     {
-
-        public void SaveState(string path)
+        /// <summary>
+        /// Overwrites a file with a single object. Encoding set to Swedish characters
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <param name="saveObject"></param>
+        public void SaveState<T>(string path, T saveObject)
         {
-            JObject writeObject = JObject.FromObject(Program.garage);
+            JObject writeObject = JObject.FromObject(saveObject);
             using(StreamWriter file = new StreamWriter(path, false, Encoding.GetEncoding("ISO-8859-1")))
             using(JsonTextWriter writer = new JsonTextWriter(file))
             {
@@ -20,12 +25,19 @@ namespace Garaget.FileManagement
             }
         }
 
-        public void RestoreState(string path)
+        /// <summary>
+        /// Restores a single object from a single file. Assumes that the file being read has no other objects
+        /// Encoding set to Swedish characters
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <returns>Object of type T</returns>
+        public T RestoreState<T>(string path)
         {
             using(StreamReader file = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
             {
-                var deserializedObject = JsonConvert.DeserializeObject<Garage<Vehicles>>(file.ReadToEnd());
-                Program.garage = deserializedObject;
+                var deserializedObject = JsonConvert.DeserializeObject<T>(file.ReadToEnd());
+                return deserializedObject;
             }
         }
 
