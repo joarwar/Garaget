@@ -15,10 +15,10 @@ namespace Garaget
 
           
             
-            Program.garage.ListVehicles();
-            foreach (var item in Program.garage.ListVehicles())
+            
+            foreach (var item in Program.garage._vehicles)
             {
-                Console.WriteLine(item.Number);               
+                Console.WriteLine(item.RegisterNumber);               
             }
             return new MainMenu();
         }
@@ -27,8 +27,8 @@ namespace Garaget
         {
             //når inte listan
 
-            Program.garage.RemoveVehicle(Program.garage.ListVehicles().Select);    
-            types.RemoveAt(Convert.ToInt32(Console.ReadLine()));
+            //Program.garage.RemoveVehicle(Program.garage._vehicles.Select);    
+            //types.RemoveAt(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine("Drive safely!");
 
             return true;

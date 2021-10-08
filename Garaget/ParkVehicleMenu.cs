@@ -180,20 +180,24 @@ namespace Garaget
         private void ParkMotorcycle()
         {
             Console.WriteLine("What did your motorcycle cost in dollars?");
-            uint price;
-            while (!uint.TryParse(Console.ReadLine(), out price))
+            decimal price;
+            while (!decimal.TryParse(Console.ReadLine(), out price))
             {
 
             }
             Console.WriteLine("How fast does your motorcycle go in km/h?");
-            string km = Console.ReadLine();
+            uint cylinder;
+            while (!uint.TryParse(Console.ReadLine(), out cylinder))
+            {
+
+            }
             Motorcycle myMotor = new Motorcycle(
                  GetTires(),
                  GetRegisterNumber(),
                  GetColor(),
                  GetSpace(),
                  GetBrand(),
-                 km, price);
+                 price, cylinder);
             Program.garage.AddVehicle(myMotor);
         }
 
@@ -240,4 +244,4 @@ namespace Garaget
         }
     }
 }
-}
+
