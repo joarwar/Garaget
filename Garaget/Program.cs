@@ -9,10 +9,10 @@ namespace Garaget
         static void Main(string[] args)
         {
             
-            Menu currentMenu = new MainMenu();
+            Menu currentMenu = new GarageCreationMenu();
             while(true)
             {
-                Console.Clear();
+                //Console.Clear();
                 currentMenu = currentMenu.ShowMenu();
             }
         }

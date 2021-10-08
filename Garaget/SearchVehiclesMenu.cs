@@ -15,7 +15,8 @@ namespace Garaget
 
         public override Menu ShowMenu()
         {
-            throw new NotImplementedException();
+
+            return new MainMenu();
         }
     }
 }

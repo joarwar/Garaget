@@ -20,6 +20,7 @@ namespace Garaget
             {
                 Console.WriteLine(item.RegisterNumber);               
             }
+            HandleInput();
             return new MainMenu();
         }
 

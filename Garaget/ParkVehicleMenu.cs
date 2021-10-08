@@ -20,7 +20,7 @@ namespace Garaget
                           + "\n0. Back to Main menu");
             while (!HandleInput())
             {
-                Console.WriteLine("Argh! Please try again! Type one of the vehicles: \n1.Motorcycle"
+                Console.WriteLine("Argh! Please try again! Type one of the vehicles: \n 1.Motorcycle"
                 + "\n2. Car"
                 + "\n3. Bus"
                 + "\n4. Truck"
@@ -32,7 +32,6 @@ namespace Garaget
             return new MainMenu();
 
         }
-
 
         public override bool HandleInput()
         {
@@ -61,11 +60,17 @@ namespace Garaget
             {
                 ParkPlane();
             }
+            //else if (vehiclepark == 0)
+            //{
+            //    return MainMenu;
+            //}
+
             else
             {
 
                 return false;
             }
+            
             return true;
 
 
