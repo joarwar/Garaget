@@ -8,23 +8,31 @@ namespace Garaget
 {
     class DepartVehicleMenu : Menu
     {
-        public override bool HandleInput()
-        {
-            throw new NotImplementedException();
-        }
 
         public override Menu ShowMenu()
         {
-            Console.WriteLine("What car would you like to take out?");          
+            Console.WriteLine("What vehicle would you like to take out?");
+
+          
             
-            List<Vehicles> Vehiclesmade = new List<Vehicles>(10);
-           
-            //Vehicles.ForEach(Console.WriteLine);
+            Program.garage.ListVehicles();
+            foreach (var item in Program.garage.ListVehicles())
+            {
+                Console.WriteLine(item.Number);               
+            }
+            return new MainMenu();
+        }
 
-            Vehiclesmade.RemoveAt(Convert.ToInt32(Console.ReadLine()));
+        public override bool HandleInput()
+        {
+            //når inte listan
 
+            Program.garage.RemoveVehicle(Program.garage.ListVehicles().Select);    
+            types.RemoveAt(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine("Drive safely!");
-            return null;
+
+            return true;
+
         }
     }
 }

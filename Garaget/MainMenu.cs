@@ -17,15 +17,15 @@ namespace Garaget
                     + "\n4. Search vehicles." // searches all vehicles through properties
                     + "\n5. Depart vehicle from garage." // removes vehicle from garage
                     + "\n6. Exit application.");
-                //HandleInput();
-                //return new ParkVehicleMenu();
-
+            //HandleInput();
+            //return new ParkVehicleMenu();
+           
 
             
             do
             {
-                int casemenu = ParseInput(Console.ReadLine(), 4);
-                switch (casemenu)
+                int caseMenu = ParseInput(Console.ReadLine(), 7);
+                switch (caseMenu)
                 {
                     case 1:
                         return new GarageCreationMenu();
@@ -38,6 +38,7 @@ namespace Garaget
                     case 5:
                         return new DepartVehicleMenu();
                     case 6:
+                    //application exit.Application
                         cont = false;
                         return new ExitMenu();
                     default:
@@ -47,6 +48,7 @@ namespace Garaget
                 }
 
             } while (cont == true);
+
             return null;
 
 
@@ -55,7 +57,7 @@ namespace Garaget
 
         public override bool HandleInput()
         {
-            Console.WriteLine("INPUT!!!");
+            
             Console.ReadLine();
             return true;
         }

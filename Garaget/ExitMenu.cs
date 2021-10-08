@@ -10,7 +10,7 @@ namespace Garaget
     {
         public int AmountOfMenuItems { get; set; }
         public Menu NextMenu { get; set; }
-
+        //tänka om
         public ExitMenu()
         {
             AmountOfMenuItems = 1;

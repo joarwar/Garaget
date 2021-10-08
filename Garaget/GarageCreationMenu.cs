@@ -13,27 +13,28 @@ namespace Garaget
             Console.WriteLine("Garage creation\n"
                 +"How many parking spots are there in the garage you wish to create?");
 
-            while(!HandleInput())
-            {
-                Console.WriteLine("Please enter the amount as a whole number");
-            }
-
-
-            Console.ReadLine();
+            HandleInput();
             return new MainMenu();
         }
 
         public override bool HandleInput()
         {
             uint input;
+
             while(!uint.TryParse(Console.ReadLine(), out input))
             {
                 
             }
 
-            Garage<Vehicles> garage = new Garage<Vehicles>(input);
+            Program.garage = new Garage<Vehicles>(input);
+
+            Console.WriteLine("You've now made a garage with " + input + " spots.");
+            Console.ReadLine();
 
             return true;
+
         }
+
+        
     }
 }
