@@ -27,6 +27,13 @@ namespace Garaget
             Brand = brand;
         }
 
+        public override string ToString()
+        {
+            return "Registration number: " + RegisterNumber +
+                "\nColor: " + Color + 
+                "\nBrand: " + Brand;
+            
+        }
 
 
 
