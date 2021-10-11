@@ -8,10 +8,18 @@ namespace Garaget
 {
     class ParkVehicleMenu : Menu
     {
+        private string vehicleTires;
+        private string space;
+        private object program;
+        private string brand;
+
+        public int Brand { get; private set; }
+        public string Color { get; private set; }
+
         public override Menu ShowMenu()
         {
 
-            Console.WriteLine("Type the vehicle would you like to park?"
+            Console.WriteLine("What vehicle would you like to park?"
                           + "\n1. Motorcycle"
                           + "\n2. Car"
                           + "\n3. Bus"
@@ -87,15 +95,18 @@ namespace Garaget
             {
                 Console.WriteLine("Please specify through either true or false.");
             }
-            Plane myPlane = new Plane(
-                GetTires(),
-                GetRegisterNumber(),
-                GetColor(),
-                GetSpace(),
-                GetBrand(),
-                planeWings, isPrivate);
-            Program.garage.AddVehicle(myPlane);
+            Plane myPlane = new Plane(planeWings, isPrivate);
+            
 
+            Console.WriteLine("You have created a plane with: \n" + 
+                          planeWings + " wings."  
+                          + "\nPrivate plane " + isPrivate +".\n"
+                          + GetTires() + " tires.\n"
+                          + GetSpace() + " seats.\n"
+                          + GetBrand()   +". \n"
+                          + GetColor() + ".\n"
+                          + GetRegisterNumber());
+            Program.garage.AddVehicle(myPlane);
         }
 
         private void ParkTruck()
@@ -201,7 +212,7 @@ namespace Garaget
             Program.garage.AddVehicle(myMotor);
         }
 
-        private uint GetTires()
+        public uint GetTires()
         {
             Console.WriteLine("How many tires does you vehicles have?");
 
