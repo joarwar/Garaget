@@ -8,7 +8,6 @@ namespace Garaget
 {
     class Plane : Vehicle 
     {
-        private uint planeWings;
 
         public uint Wings { get; set; }
         public bool IsPrivate { get; set; }
@@ -16,12 +15,6 @@ namespace Garaget
         {
             Wings = wings;
             IsPrivate = isPrivate;
-        }
-
-        public Plane(uint planeWings, bool isPrivate)
-        {
-            this.planeWings = planeWings;
-            IsPrivate = isPrivate;
-        }
+        } 
     }
 }

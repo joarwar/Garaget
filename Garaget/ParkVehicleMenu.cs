@@ -95,17 +95,13 @@ namespace Garaget
             {
                 Console.WriteLine("Please specify through either true or false.");
             }
-            Plane myPlane = new Plane(planeWings, isPrivate);
-            
-
-            Console.WriteLine("You have created a plane with: \n" + 
-                          planeWings + " wings."  
-                          + "\nPrivate plane " + isPrivate +".\n"
-                          + GetTires() + " tires.\n"
-                          + GetSpace() + " seats.\n"
-                          + GetBrand()   +". \n"
-                          + GetColor() + ".\n"
-                          + GetRegisterNumber());
+            Plane myPlane = new Plane(
+                GetTires(),
+                GetRegisterNumber(),
+                GetColor(),
+                GetSpace(),
+                GetBrand(),
+                planeWings, isPrivate);            
             Program.garage.AddVehicle(myPlane);
         }
 
