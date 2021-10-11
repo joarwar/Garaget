@@ -8,32 +8,23 @@ namespace Garaget
 {
     class ParkVehicleMenu : Menu
     {
-        private string vehicleTires;
-        private string space;
-        private object program;
-        private string brand;
 
         public int Brand { get; private set; }
         public string Color { get; private set; }
 
-        public override Menu ShowMenu()
-        {
-
-            Console.WriteLine("What vehicle would you like to park?"
-                          + "\n1. Motorcycle"
+        private const string menuOptions = "\n1. Motorcycle"
                           + "\n2. Car"
                           + "\n3. Bus"
                           + "\n4. Truck"
                           + "\n5. Plane"
-                          + "\n6. Back to Main menu");
+                          + "\n6. Back to Main menu";
+        public override Menu ShowMenu()
+        {
+
+            Console.WriteLine("What vehicle would you like to park?" + menuOptions);
             while (!HandleInput())
             {
-                Console.WriteLine("Argh! Please try again! Type one of the vehicles:\n1. Motorcycle"
-                + "\n2. Car"
-                + "\n3. Bus"
-                + "\n4. Truck"
-                + "\n5. Plane"
-                + "\n6. Back to Main menu");
+                Console.WriteLine("Argh! Please try again! Type one of the vehicles:" + menuOptions);
             }
 
 
@@ -47,7 +38,7 @@ namespace Garaget
             {
 
                 int parkMenu = ParseInput(Console.ReadLine(), 6);
-                switch (parkMenu)
+                switch (parkMenu) 
                 {
                     case 1:
                         ParkMotorcycle();
@@ -62,17 +53,18 @@ namespace Garaget
                         ParkTruck();
                         break;
                     case 5:
-                        ParkPlane();
+                        ParkPlane();                       
                         break;
                     case 6:
                         return true;
-                    default:
-                        
+                    default: 
                         cont = false;
                         break;
                 }
 
-               
+                Console.ReadLine();
+                Console.WriteLine("What do you want to do?" + menuOptions);
+
             } while (cont);
             return false;
 
@@ -101,8 +93,9 @@ namespace Garaget
                 GetColor(),
                 GetSpace(),
                 GetBrand(),
-                planeWings, isPrivate);            
+                planeWings, isPrivate);                    
             Program.garage.AddVehicle(myPlane);
+
         }
 
         private void ParkTruck()
@@ -127,6 +120,7 @@ namespace Garaget
                     GetSpace(),
                     GetBrand(),
                     isPickup, truckYear);
+            
             Program.garage.AddVehicle(myTruck);
 
 
@@ -145,7 +139,7 @@ namespace Garaget
             uint floor;
             while (!uint.TryParse(Console.ReadLine(), out floor))
             {
-                Console.WriteLine("Please only write numbers highter than 0!");
+                Console.WriteLine("Please only write numbers higher than 0!");
             }
             Bus myBus = new Bus(
                  GetTires(),
@@ -193,8 +187,8 @@ namespace Garaget
                 Console.WriteLine("Please only write numbers!");
             }
             Console.WriteLine("How fast does your motorcycle go in km/h?");
-            uint cylinder;
-            while (!uint.TryParse(Console.ReadLine(), out cylinder))
+            uint speed;
+            while (!uint.TryParse(Console.ReadLine(), out speed))
             {
                 Console.WriteLine("Please only write numbers highter than 0!");
             }
@@ -204,7 +198,7 @@ namespace Garaget
                  GetColor(),
                  GetSpace(),
                  GetBrand(),
-                 price, cylinder);
+                 price, speed);
             Program.garage.AddVehicle(myMotor);
         }
 

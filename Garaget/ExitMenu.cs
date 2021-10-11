@@ -8,13 +8,13 @@ namespace Garaget
 {
     class ExitMenu : Menu
     {
-        public int AmountOfMenuItems { get; set; }
-        public Menu NextMenu { get; set; }
-        //tänka om
-        public ExitMenu()
-        {
-            AmountOfMenuItems = 1;
-        }
+        //public int AmountOfMenuItems { get; set; }
+        //public Menu NextMenu { get; set; }
+        ////tänka om
+        //public ExitMenu()
+        //{
+        //    AmountOfMenuItems = 1;
+        //}
 
         public override Menu ShowMenu()
         {
