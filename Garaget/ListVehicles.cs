@@ -21,6 +21,7 @@ namespace Garaget
             foreach (var item in Program.garage._vehicles)
             {
                 Console.WriteLine(item);
+                Console.WriteLine("-------------------------------");
             }
 
             HandleInput();
