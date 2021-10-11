@@ -94,7 +94,7 @@ namespace Garaget
                 GetSpace(),
                 GetBrand(),
                 planeWings, isPrivate);
-            Console.WriteLine(myPlane);
+            Console.WriteLine("You have created a plane with these properties:\n" + myPlane);
             Program.garage.AddVehicle(myPlane);
 
         }
@@ -121,7 +121,7 @@ namespace Garaget
                     GetSpace(),
                     GetBrand(),
                     isPickup, truckYear);
-            Console.WriteLine(myTruck);
+            Console.WriteLine("You have created a truck with these properties:\n" + myTruck);
             Program.garage.AddVehicle(myTruck);
 
 
@@ -149,7 +149,7 @@ namespace Garaget
                  GetSpace(),
                  GetBrand(),
                  isSchoolbus, floor);
-            Console.WriteLine(myBus);
+            Console.WriteLine("You have created a bus with these properties:\n" + myBus);
             Program.garage.AddVehicle(myBus);
 
 
@@ -176,7 +176,7 @@ namespace Garaget
                  GetSpace(),
                  GetBrand(),
                  fuel, isCabriolet);
-            Console.WriteLine(myCar);
+            Console.WriteLine("You have created a car with these properties:\n" + myCar);
             Program.garage.AddVehicle(myCar);
 
 
@@ -203,7 +203,7 @@ namespace Garaget
                  GetSpace(),
                  GetBrand(),
                  price, cylinder);
-            Console.WriteLine(myMotor);
+            Console.WriteLine("You have created a motorcycle with these properties:\n" + myMotor);
             Program.garage.AddVehicle(myMotor);
         }
 
