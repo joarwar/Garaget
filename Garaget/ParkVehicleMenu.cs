@@ -93,7 +93,8 @@ namespace Garaget
                 GetColor(),
                 GetSpace(),
                 GetBrand(),
-                planeWings, isPrivate);                    
+                planeWings, isPrivate);
+            Console.WriteLine(myPlane);
             Program.garage.AddVehicle(myPlane);
 
         }
@@ -120,7 +121,7 @@ namespace Garaget
                     GetSpace(),
                     GetBrand(),
                     isPickup, truckYear);
-            
+            Console.WriteLine(myTruck);
             Program.garage.AddVehicle(myTruck);
 
 
@@ -148,7 +149,9 @@ namespace Garaget
                  GetSpace(),
                  GetBrand(),
                  isSchoolbus, floor);
+            Console.WriteLine(myBus);
             Program.garage.AddVehicle(myBus);
+
 
 
 
@@ -173,6 +176,7 @@ namespace Garaget
                  GetSpace(),
                  GetBrand(),
                  fuel, isCabriolet);
+            Console.WriteLine(myCar);
             Program.garage.AddVehicle(myCar);
 
 
@@ -199,6 +203,7 @@ namespace Garaget
                  GetSpace(),
                  GetBrand(),
                  price, cylinder);
+            Console.WriteLine(myMotor);
             Program.garage.AddVehicle(myMotor);
         }
 
