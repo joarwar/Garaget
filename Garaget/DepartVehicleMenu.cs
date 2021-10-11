@@ -12,13 +12,10 @@ namespace Garaget
         public override Menu ShowMenu()
         {
             Console.WriteLine("What vehicle would you like to take out?");
-
-          
-            
-            
-            foreach (var item in Program.garage._vehicles)
+            for (int vehicleIndex = 0; vehicleIndex < Program.garage.Count; vehicleIndex++)
             {
-                Console.WriteLine(item.RegisterNumber);               
+                var item = Program.garage[vehicleIndex];
+                Console.WriteLine((vehicleIndex + 1) + ". " + item.RegisterNumber + " " + item.GetType().Name);
             }
             HandleInput();
             return new MainMenu();
@@ -30,6 +27,7 @@ namespace Garaget
 
             //Program.garage.RemoveVehicle(Program.garage._vehicles.Select);    
             //types.RemoveAt(Convert.ToInt32(Console.ReadLine()));
+            Console.ReadLine();
             Console.WriteLine("Drive safely!");
 
             return true;
