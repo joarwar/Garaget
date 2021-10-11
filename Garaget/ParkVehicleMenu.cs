@@ -61,7 +61,7 @@ namespace Garaget
                         cont = false;
                         break;
                 }
-
+                Console.WriteLine("Press any key to continue....");
                 Console.ReadLine();
                 Console.WriteLine("What do you want to do?" + menuOptions);
 
