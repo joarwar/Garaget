@@ -16,6 +16,12 @@ namespace Garaget
             Price = price;
             Cylinder = cylinder;
         }
+        public override string ToString()
+        {
+            return base.ToString() +
+                "\nCost: " + Price +
+                "\nCylinders: " + Cylinder;
+        }
     }
 
 }

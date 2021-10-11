@@ -15,6 +15,12 @@ namespace Garaget
         {
             Wings = wings;
             IsPrivate = isPrivate;
-        } 
+        }
+        public override string ToString()
+        {
+            return base.ToString() +
+                "\nWings: " + Wings +
+                "\n" + (IsPrivate ? "Is Private" : "Is not private");
+        }
     }
 }

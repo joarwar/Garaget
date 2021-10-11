@@ -186,9 +186,9 @@ namespace Garaget
             {
                 Console.WriteLine("Please only write numbers!");
             }
-            Console.WriteLine("How fast does your motorcycle go in km/h?");
-            uint speed;
-            while (!uint.TryParse(Console.ReadLine(), out speed))
+            Console.WriteLine("How many cylinders does your motorcycle have?");
+            uint cylinder;
+            while (!uint.TryParse(Console.ReadLine(), out cylinder))
             {
                 Console.WriteLine("Please only write numbers highter than 0!");
             }
@@ -198,7 +198,7 @@ namespace Garaget
                  GetColor(),
                  GetSpace(),
                  GetBrand(),
-                 price, speed);
+                 price, cylinder);
             Program.garage.AddVehicle(myMotor);
         }
 

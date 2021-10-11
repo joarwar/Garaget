@@ -15,5 +15,11 @@ namespace Garaget
             IsSchoolBus = isSchoolBus;
             Floor = floor;
         }
+        public override string ToString()
+        {
+            return base.ToString() + 
+                "\n " +  (IsSchoolBus ? "Is School bus":"Is not a school bus") + 
+                "\nFloors: " + Floor; 
+        }
     }
 }
