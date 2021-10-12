@@ -16,5 +16,12 @@ namespace Garaget
             IsPickup = isPickup;
             ModelYear = modelYear;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() +
+               "\n" + (IsPickup ? "Is pickup":"Is not a pickup") +
+               "\nYear made: " + ModelYear;
+        }
     }
 }

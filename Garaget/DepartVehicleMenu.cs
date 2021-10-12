@@ -11,25 +11,43 @@ namespace Garaget
 
         public override Menu ShowMenu()
         {
-            Console.WriteLine("What vehicle would you like to take out?");
-
-          
-            
-            Program.garage.ListVehicles();
-            foreach (var item in Program.garage.ListVehicles())
+            Console.WriteLine("Type the number of the vehicle you would like to take out?");
+            for (int vehicleIndex = 0; vehicleIndex < Program.garage.Count; vehicleIndex++)
             {
-                Console.WriteLine(item.Number);               
+                var item = Program.garage[vehicleIndex];
+                Console.WriteLine((vehicleIndex + 1) + ". " + item.RegisterNumber + " " + item.GetType().Name);
             }
+            HandleInput();
+            Console.WriteLine("Press any key to continue.....");
+            Console.ReadLine();
+            
             return new MainMenu();
         }
 
         public override bool HandleInput()
         {
-            //når inte listan
 
-            Program.garage.RemoveVehicle(Program.garage.ListVehicles().Select);    
-            types.RemoveAt(Convert.ToInt32(Console.ReadLine()));
-            Console.WriteLine("Drive safely!");
+            do
+            {
+
+                int departMenu = ParseInput(Console.ReadLine(), Program.garage.Count);
+                if (departMenu > 0 && departMenu <= Program.garage.Count)
+
+                {
+                    Console.WriteLine(Program.garage[departMenu - 1]);
+                    Program.garage.RemoveVehicle(Program.garage[departMenu - 1]);
+                    //remove vehicle
+                    cont = false;
+
+                }
+                else
+                {
+                    Console.WriteLine("Value not accepted, try again");
+                }
+               
+            } while (cont);
+
+            Console.WriteLine("\nDrive safely!");
 
             return true;
 

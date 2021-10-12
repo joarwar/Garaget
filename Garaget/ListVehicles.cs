@@ -10,13 +10,22 @@ namespace Garaget
     {
         public override bool HandleInput()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Press any key to get to the main menu");
+            Console.ReadLine();
+            return true;
+
         }
 
         public override Menu ShowMenu()
         {
-            Console.WriteLine("");
-            throw new NotImplementedException();
+            foreach (var item in Program.garage._vehicles)
+            {
+                Console.WriteLine(item);
+                Console.WriteLine("-------------------------------");
+            }
+
+            HandleInput();
+            return new MainMenu();
         }
     }
 }

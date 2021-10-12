@@ -16,5 +16,12 @@ namespace Garaget
             IsCabriolet = isCabriolet;
 
         }
+        public override string ToString()
+        {
+            return base.ToString() +
+                "\nFuel: " + Fuel +
+                "\n" + (IsCabriolet ? "Is cabriolet" : "Is not a cabriolet");
+        }
+
     }
 }
