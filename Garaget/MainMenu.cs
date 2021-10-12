@@ -16,7 +16,8 @@ namespace Garaget
                     + "\n3. List vehicles." // show created vehicles
                     + "\n4. Search vehicles." // searches all vehicles through properties
                     + "\n5. Depart vehicle from garage." // removes vehicle from garage
-                    + "\n6. Exit application.");
+                    + "\n6. Save or Load garages." 
+                    + "\n7. Exit application");
             //HandleInput();
             //return new ParkVehicleMenu();
            
@@ -38,8 +39,8 @@ namespace Garaget
                     case 5:
                         return new DepartVehicleMenu();
                     case 6:
-                    //application exit.Application
-                        cont = false;
+                        return new SaveLoadMenu();
+                    case 7:
                         return new ExitMenu();
                     default:
                         Console.WriteLine("Skriv gärna en siffra mellan 1-5.");
