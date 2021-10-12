@@ -8,7 +8,7 @@ namespace Garaget
 
         // checks a specific item if it has a property at all.
         // this utilizes the fact that if the property does not exist, C# returns null.
-        public static bool HasProperty<T>(T item, string propertyName) where T : class
+        public static bool HasProperty<T>(this T item, string propertyName) where T : class
         {
             return item.GetType().GetProperty(propertyName) != null;
         }
