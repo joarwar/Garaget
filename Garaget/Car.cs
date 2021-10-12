@@ -14,7 +14,7 @@ namespace Garaget
         {
             Fuel = fuel;
             IsCabriolet = isCabriolet;
-
+            ObjType = 1;
         }
         public override string ToString()
         {

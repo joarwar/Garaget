@@ -14,6 +14,7 @@ namespace Garaget
         {
             IsSchoolBus = isSchoolBus;
             Floor = floor;
+            ObjType = 2;
         }
         public override string ToString()
         {

@@ -15,6 +15,7 @@ namespace Garaget
         {
             Price = price;
             Cylinder = cylinder;
+            ObjType = 3;
         }
         public override string ToString()
         {

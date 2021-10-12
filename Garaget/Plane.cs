@@ -15,6 +15,7 @@ namespace Garaget
         {
             Wings = wings;
             IsPrivate = isPrivate;
+            ObjType = 4;
         }
         public override string ToString()
         {

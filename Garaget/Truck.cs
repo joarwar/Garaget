@@ -15,6 +15,7 @@ namespace Garaget
 
             IsPickup = isPickup;
             ModelYear = modelYear;
+            ObjType = 5;
         }
 
         public override string ToString()

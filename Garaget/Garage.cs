@@ -4,6 +4,8 @@ using System;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
+using Newtonsoft.Json.Linq;
+using Garaget.FileManagement;
 
 namespace Garaget
 {
@@ -127,6 +129,16 @@ namespace Garaget
             using(StreamWriter file = new StreamWriter(path, false, Encoding.GetEncoding("ISO-8859-1")))
             {
                 file.Write(json);
+            }
+        }
+
+        public void RestoreState()
+        {
+            string path = "test.json";
+            using(StreamReader file = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
+            {
+                JsonConverter converter = new BaseConverter();
+                Program.garage = JsonConvert.DeserializeObject<Garage<Vehicle>>(file.ReadToEnd(), converter);
             }
         }
 
