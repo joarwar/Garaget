@@ -90,7 +90,15 @@ namespace Garaget
 
         public override Menu ShowMenu()
         {
-            return null;
+            Console.WriteLine("Choose the property you want to search with:" 
+                   + "\n1. Color"
+                    + "\n2. Registration number" 
+                    + "\n3. Bran" 
+                    + "\n4. Search vehicles." 
+                    + "\n5. Depart vehicle from garage." 
+                    + "\n6. Exit application.");
+            HandleInput();
+            return new MainMenu();
         }
 
         private bool GetBoolFromUser()
