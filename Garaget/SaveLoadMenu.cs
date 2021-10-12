@@ -11,17 +11,14 @@ namespace Garaget
     {
         public override bool HandleInput()
         {
-            JSONWrapper wrapper = new JSONWrapper();
-
-            string filePath = "savedgarage.json";
             int saveLoadMenu = ParseInput(Console.ReadLine(), 3);
             switch (saveLoadMenu)
             {
                 case 1:
-                    wrapper.SaveState(filePath, Program.garage);
+                    Program.garage.SaveState(Program.path);
                     break;
                 case 2:
-                   // Program.garage = wrapper.RestoreState<Garage<Vehicle>>(filePath);
+                    Program.garage.RestoreState(Program.path);
                     break;
                 case 3:
                     return true;

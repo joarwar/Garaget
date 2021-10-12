@@ -122,9 +122,9 @@ namespace Garaget
             }
         }
         
-        public void SaveState()
+        public void SaveState(string path)
         {
-            string path = "test.json";
+            //string path = "test.json";
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
             using(StreamWriter file = new StreamWriter(path, false, Encoding.GetEncoding("ISO-8859-1")))
             {
@@ -132,9 +132,9 @@ namespace Garaget
             }
         }
 
-        public void RestoreState()
+        public void RestoreState(string path)
         {
-            string path = "test.json";
+            //string path = "test.json";
             using(StreamReader file = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
             {
                 JsonConverter converter = new BaseConverter();

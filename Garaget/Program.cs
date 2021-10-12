@@ -5,6 +5,7 @@ namespace Garaget
     class Program
     {
         public static Garage<Vehicle> garage;
+        public static string path = "savedgarage.json";
 
         static void Main(string[] args)
         {

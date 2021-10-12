@@ -25,7 +25,7 @@ namespace Garaget
 
         public override bool HandleInput()
         {
-
+            Program.garage.SaveState(Program.path);
             Environment.Exit(0);
             return false;
         }
