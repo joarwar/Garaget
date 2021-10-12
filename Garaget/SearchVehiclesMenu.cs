@@ -11,7 +11,7 @@ namespace Garaget
         public override bool HandleInput()
         {
             List<Vehicle> searchVehicleList = new List<Vehicle>();
-            int searchMenu = ParseInput(Console.ReadLine(), 15);
+            int searchMenu = ParseInput(Console.ReadLine(), 16);
             switch (searchMenu)
             {
                 case 1:
@@ -74,10 +74,16 @@ namespace Garaget
                     Console.WriteLine("What is the model year of the vehicle?");
                     searchVehicleList = Program.garage.SearchVehicles("ModelYear", GetIntFromUser());
                     break;
+                case 16:
+                    return false;
                 default:
-                    Console.WriteLine("Try again, please type a number between 1-12");
-                    cont = false;
+                    Console.WriteLine("Try again, please type a number between 1-16");                  
                     break;
+            }
+            if (searchVehicleList.Count == 0 )
+            {
+                Console.WriteLine("No results was found.");
+                return true;
             }
             foreach (Vehicle vehicle in searchVehicleList)
             {
@@ -91,13 +97,28 @@ namespace Garaget
         public override Menu ShowMenu()
         {
             Console.WriteLine("Choose the property you want to search with:" 
-                   + "\n1. Color"
+                    + "\n1. Color"
                     + "\n2. Registration number" 
-                    + "\n3. Bran" 
-                    + "\n4. Search vehicles." 
-                    + "\n5. Depart vehicle from garage." 
-                    + "\n6. Exit application.");
-            HandleInput();
+                    + "\n3. Brand" 
+                    + "\n4. Seats" 
+                    + "\n5. Tires" 
+                    + "\n6. Fuel" 
+                    + "\n7. Cabriolet"
+                    + "\n8. School bus" 
+                    + "\n9. Floors" 
+                    + "\n10. Price" 
+                    + "\n11. Cylinders" 
+                    + "\n12. Wings "
+                    + "\n13. Private Plane"
+                    + "\n14. Pickup" 
+                    + "\n15. Model year" 
+                    + "\n16. Go back to main menu." );
+
+            while (HandleInput())
+            {
+
+            }
+            
             return new MainMenu();
         }
 

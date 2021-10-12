@@ -14,8 +14,8 @@ namespace Garaget
             garage.AddVehicle(new Car(3, "bool70", "green", 5, "tot", "gas", false));
             garage.AddVehicle(new Car(3, "ouy055", "green", 5, "tot", "gas", false));
             garage.AddVehicle(new Car(3, "mim794", "green", 5, "tot", "gas", false));
-
             Menu currentMenu = new MainMenu();
+            //Menu currentMenu = new GarageCreationMenu();
             while(true)
             {
                 //Console.Clear();
