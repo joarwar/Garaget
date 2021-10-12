@@ -19,7 +19,7 @@ namespace Garaget
         public override string ToString()
         {
             return base.ToString() + 
-                "\n " +  (IsSchoolBus ? "Is School bus":"Is not a school bus") + 
+                "\n" +  (IsSchoolBus ? "Is School bus":"Is not a school bus") + 
                 "\nFloors: " + Floor; 
         }
     }
