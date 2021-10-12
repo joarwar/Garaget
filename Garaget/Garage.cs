@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
+using System.IO;
+using System.Text;
 
 namespace Garaget
 {
@@ -95,12 +97,9 @@ namespace Garaget
             return returnList; // and we return the list
         }
 
-        public void ListVehicles()
+        public List<T> ListVehicles()
         {
-            foreach(T vehicle in _vehicles)
-            {
-                Console.WriteLine(vehicle);
-            }
+            return _vehicles;
         }
 
         public void ListTypesOfVehicles()
@@ -121,7 +120,15 @@ namespace Garaget
             }
         }
         
-        
+        public void SaveState()
+        {
+            string path = "test.json";
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            using(StreamWriter file = new StreamWriter(path, false, Encoding.GetEncoding("ISO-8859-1")))
+            {
+                file.Write(json);
+            }
+        }
 
 
         #region IEnumerableImplementation
