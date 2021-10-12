@@ -84,7 +84,7 @@ namespace Garaget
                 Console.WriteLine(vehicle);
                 Console.WriteLine("----------------------------------");
             }
-            return null;
+            return true;
         }
 
 
