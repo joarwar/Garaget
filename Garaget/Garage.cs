@@ -73,7 +73,21 @@ namespace Garaget
                 }
                 // if it has the property we continue
                 TType val = item.GetPropValue<TType>(property); // we store the value of the property of
-                if(val.Equals(value)) // and check if it is the same value as what was passed in
+
+                // checks case insesitive match
+                bool isCaseInsesitiveMatch = false;
+                if(val.GetType().Name == "String")
+                {
+                    string lowerVal = val.ToString().ToLower();
+                    string lowerValue = value.ToString().ToLower();
+                    if(lowerVal == lowerValue)
+                    {
+                        isCaseInsesitiveMatch = true;
+                    }
+                }
+
+                // and check if it is the same value as what was passed in
+                if(isCaseInsesitiveMatch || val.Equals(value)) 
                 {
                     returnList.Add(item); // if it is, we store it in the list
                 }
