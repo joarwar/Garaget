@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Garaget
 {
@@ -13,12 +9,11 @@ namespace Garaget
             Console.WriteLine("Press any key to get to the main menu");
             Console.ReadLine();
             return true;
-
         }
 
         public override Menu ShowMenu()
         {
-            foreach (var item in Program.garage._vehicles)
+            foreach (var item in Program.garage.vehicles)
             {
                 Console.WriteLine(item);
                 Console.WriteLine("-------------------------------");

@@ -2,6 +2,8 @@
 using Newtonsoft.Json.Linq;
 using System;
 
+// Implementation based on the following thread
+// https://stackoverflow.com/questions/20995865/deserializing-json-to-abstract-class
 namespace Garaget.FileManagement
 {
     public class BaseConverter : JsonConverter

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Garaget
+﻿namespace Garaget
 {
     class Program
     {

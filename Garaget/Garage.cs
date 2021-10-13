@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using Garaget.FileManagement;
 using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using Garaget.FileManagement;
 
 namespace Garaget
 {
@@ -13,36 +12,36 @@ namespace Garaget
     class Garage <T> : IEnumerable<T> where T : Vehicle
     {
         public uint ParkingSpots { get; private set; }
-        public List<T> _vehicles;
+        public List<T> vehicles;
 
-        public T this[int idx] => _vehicles[idx]; // Indexer - Used for returning a value based on a int index
-        public int Count => _vehicles.Count;
+        public T this[int idx] => vehicles[idx];
+        public int Count => vehicles.Count;
 
         public Garage(uint parkingSpots)
         {
             ParkingSpots = parkingSpots;
-            _vehicles = new List<T>();
+            vehicles = new List<T>();
         }
 
         public bool AddVehicle(T item)
         {
-            if(_vehicles.Count == ParkingSpots)
+            if(vehicles.Count == ParkingSpots)
             {
                 Console.WriteLine("Garage is full, vehicle not parked");
                 return false;
             }
-            _vehicles.Add(item);
+            vehicles.Add(item);
             return true;
         }
 
         public void RemoveVehicle(T item)
         {
-            _vehicles.Remove(item);
+            vehicles.Remove(item);
         }
 
         public bool SearchVehicle(string regNr)
         {
-            foreach(T item in _vehicles)
+            foreach(T item in vehicles)
             {
                 if(item.RegisterNumber == regNr)
                 {
@@ -52,62 +51,51 @@ namespace Garaget
             return false;
         }
 
-        // For the SearchVehicles I've included an extensionclass (found in ObjectExtension.cs)
-        // The method takes a property as a string (this is case sensitive)
-        // and matches against a property in the class. And then returns the value.
-
-        // in here we declare a list and first find all the objects in the list that has the property at all
-        // then we go through them and check the value
         /// <summary>
         /// Search the garage for all vehicles with a matching property and value pair. Input "value" must be of same type
         /// as the property looked for
         /// </summary>
         /// <typeparam name="TType"></typeparam>
         /// <param name="property"></param>
-        /// <param name="value"></param>
+        /// <param name="searchInput"></param>
         /// <returns>A list of vehicles</returns>
-        public List<T> SearchVehicles<TType>(string property, TType value)
+        public List<T> SearchVehicles<TType>(string property, TType searchInput)
         {
-            List<T> returnList = new List<T>(); // create list to be sent from method
-            foreach(T item in _vehicles) // go through all entries in the list
+            List<T> returnList = new List<T>();
+            foreach(T item in vehicles)
             {
-                if(!item.HasProperty(property)) // check if the entry has the property we are looking for
+                if(!item.HasProperty(property))
                 {
-                    continue; // if it does not, we continue to the next entry
+                    continue;
                 }
-                // if it has the property we continue
-                TType val = item.GetPropValue<TType>(property); // we store the value of the property of
+                TType propertyValue = item.GetPropValue<TType>(property);
 
-                // checks case insesitive match
                 bool isCaseInsesitiveMatch = false;
-                if(val.GetType().Name == "String")
+                if(propertyValue.GetType().Name == "String")
                 {
-                    string lowerVal = val.ToString().ToLower();
-                    string lowerValue = value.ToString().ToLower();
-                    if(lowerVal == lowerValue)
+                    if(propertyValue.ToString().ToLower() == searchInput.ToString().ToLower())
                     {
                         isCaseInsesitiveMatch = true;
                     }
                 }
 
-                // and check if it is the same value as what was passed in
-                if(isCaseInsesitiveMatch || val.Equals(value)) 
+                if(isCaseInsesitiveMatch || propertyValue.Equals(searchInput)) 
                 {
-                    returnList.Add(item); // if it is, we store it in the list
+                    returnList.Add(item);
                 }
             }
-            return returnList; // and we return the list
+            return returnList;
         }
 
         public List<T> ListVehicles()
         {
-            return _vehicles;
+            return vehicles;
         }
 
         public void ListTypesOfVehicles()
         {
             List<string> types = new List<string>();
-            foreach(T vehicle in _vehicles)
+            foreach(T vehicle in vehicles)
             {
                 string vehicleType = vehicle.GetType().Name;
                 if(types.Contains(vehicleType))
@@ -124,7 +112,6 @@ namespace Garaget
         
         public void SaveState(string path)
         {
-            //string path = "test.json";
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
             using(StreamWriter file = new StreamWriter(path, false, Encoding.GetEncoding("ISO-8859-1")))
             {
@@ -134,14 +121,12 @@ namespace Garaget
 
         public void RestoreState(string path)
         {
-            //string path = "test.json";
             using(StreamReader file = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
             {
                 JsonConverter converter = new BaseConverter();
                 Program.garage = JsonConvert.DeserializeObject<Garage<Vehicle>>(file.ReadToEnd(), converter);
             }
         }
-
 
         #region IEnumerableImplementation
         /*
@@ -153,7 +138,7 @@ namespace Garaget
         */
         public IEnumerator<T> GetEnumerator()
         {
-            return _vehicles.GetEnumerator();
+            return vehicles.GetEnumerator();
         }
 
         // Legacy implementation

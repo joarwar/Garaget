@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Garaget
 {
@@ -93,7 +90,6 @@ namespace Garaget
             return true;
         }
 
-
         public override Menu ShowMenu()
         {
             Console.WriteLine("Choose the property you want to search with:" 
@@ -131,6 +127,7 @@ namespace Garaget
             }
             return returnValue;
         }
+
         private uint GetPositiveIntFromUser()
         {
             uint posInt;
@@ -140,6 +137,7 @@ namespace Garaget
             }
             return posInt;
         }
+
         private decimal GetDecimalFromUser()
         {
             decimal decNumber;
@@ -149,6 +147,7 @@ namespace Garaget
             }
             return decNumber;
         }
+
         private int GetIntFromUser()
         {
             int normInt;

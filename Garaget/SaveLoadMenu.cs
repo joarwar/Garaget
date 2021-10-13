@@ -1,9 +1,4 @@
-﻿using Garaget.FileManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Garaget
 {
@@ -31,7 +26,6 @@ namespace Garaget
             return false;
         }
 
-
         public override Menu ShowMenu()
         {
             Console.WriteLine("What do you want to do?" +
@@ -40,10 +34,6 @@ namespace Garaget
                 "\n3. Go back to main menu");
             HandleInput();
             return new MainMenu();
-
         }
-        
-             
-        
     }
 }

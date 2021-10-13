@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Garaget
 {
@@ -18,11 +14,7 @@ namespace Garaget
                     + "\n5. Depart vehicle from garage." // removes vehicle from garage
                     + "\n6. Save or Load garages." 
                     + "\n7. Exit application");
-            //HandleInput();
-            //return new ParkVehicleMenu();
-           
 
-            
             do
             {
                 int caseMenu = ParseInput(Console.ReadLine(), 7);
@@ -51,8 +43,6 @@ namespace Garaget
             } while (cont == true);
 
             return null;
-
-
         }
 
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Garaget
+﻿namespace Garaget
 {
     public abstract class Menu
     {
@@ -32,60 +26,5 @@ namespace Garaget
             }
             return returnValue;
         }
-        // Show
-        // Input
-        // Parse
-
-
-        //public void ListVehicles()
-        //{
-        //    Console.WriteLine("Listing all vehicles...");
-        //    // Functionality to list all vehicles
-        //}
-        //public void ShowSearchVehicles()
-        //{
-        //    Console.WriteLine("Find a vehicle in the garage by adding a parameter."
-        //                  + "\n1. To find with a registration number."
-        //                  + "\n2. To find all with colour."
-        //                  + "\n3. To find all with a specified number of wheels."
-        //                  + "\n4. To find all with a minimum number of passengers."
-        //                  + "\n5. To find all with cabriolet"
-        //                  + "\n0. Exit the finding!");
-        //}
-
-        //public void ShowDepartVehicleMenu()
-        //{
-
-        //}
-
-        //public void ShowFindByRegNumber()
-        //{
-        //    Console.WriteLine("Find by reg");      
-        //}
-
-        //public void ShowFindByColor()
-        //{
-        //    Console.WriteLine("");
-        //}
-
-        //public void ShowByAmountOfWheels()
-        //{
-        //    Console.WriteLine("");
-        //}
-
-        //public void ShowVehicleByMinimumPassengers()
-        //{
-        //    Console.WriteLine("");
-        //}
-
-        //public void ShowCabriolet()
-        //{
-        //    Console.WriteLine("");
-        //}
-
-        //public void ShowExit()
-        //{
-        //    Console.WriteLine("");
-        //}
     }
 }

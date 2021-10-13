@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Garaget
 {
     class ParkVehicleMenu : Menu
     {
-
         public int Brand { get; private set; }
         public string Color { get; private set; }
-
         private const string menuOptions = "\n1. Motorcycle"
                           + "\n2. Car"
                           + "\n3. Bus"
                           + "\n4. Truck"
                           + "\n5. Plane"
                           + "\n6. Back to Main menu";
+
         public override Menu ShowMenu()
         {
 
@@ -67,14 +62,10 @@ namespace Garaget
 
             } while (cont);
             return false;
-
-
         }
 
         private void ParkPlane()
         {
-
-
             Console.WriteLine("How many wings does your plane have?");
             uint planeWings;
             while (!uint.TryParse(Console.ReadLine(), out planeWings))
@@ -96,12 +87,10 @@ namespace Garaget
                 planeWings, isPrivate);
             Console.WriteLine("You have created a plane with these properties:\n" + myPlane);
             Program.garage.AddVehicle(myPlane);
-
         }
 
         private void ParkTruck()
         {
-
             Console.WriteLine("Is it a pickup? (True/False)");
             bool isPickup;
             while (!bool.TryParse(Console.ReadLine(), out isPickup))
@@ -123,8 +112,6 @@ namespace Garaget
                     isPickup, truckYear);
             Console.WriteLine("You have created a truck with these properties:\n" + myTruck);
             Program.garage.AddVehicle(myTruck);
-
-
         }
 
         private void ParkBus()
@@ -151,15 +138,10 @@ namespace Garaget
                  isSchoolbus, floor);
             Console.WriteLine("You have created a bus with these properties:\n" + myBus);
             Program.garage.AddVehicle(myBus);
-
-
-
-
         }
 
         private void ParkCar()
         {
-
             Console.WriteLine("What fuel does your car use?");
             string fuel = Console.ReadLine();
 
@@ -178,8 +160,6 @@ namespace Garaget
                  fuel, isCabriolet);
             Console.WriteLine("You have created a car with these properties:\n" + myCar);
             Program.garage.AddVehicle(myCar);
-
-
         }
 
         private void ParkMotorcycle()
@@ -222,9 +202,7 @@ namespace Garaget
         private string GetRegisterNumber()
         {
             Console.WriteLine("What registration number does your vehicle have?");
-
             return Console.ReadLine();
-
         }
 
         private string GetColor()
