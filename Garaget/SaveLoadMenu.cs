@@ -11,9 +11,16 @@ namespace Garaget
             {
                 case 1:
                     Program.garage.SaveState(Program.path);
+                    Console.WriteLine("Garage saved");
                     break;
                 case 2:
                     Program.garage.RestoreState(Program.path);
+                    Console.WriteLine("Garage loaded with the following vehicles:\n");
+                    foreach(Vehicle vehicle in Program.garage)
+                    {
+                        Console.WriteLine(vehicle);
+                        Console.WriteLine("------------------");
+                    }
                     break;
                 case 3:
                     return true;
@@ -21,7 +28,6 @@ namespace Garaget
                     Console.WriteLine("Try again!");
                     break;
             }
-            Console.WriteLine("Press any key to continue....");
             Console.ReadLine();
             return false;
         }
@@ -29,10 +35,13 @@ namespace Garaget
         public override Menu ShowMenu()
         {
             Console.WriteLine("What do you want to do?" +
-                "\n1. Saved current garage" +
-                "\n2. Open saved garages" +
+                "\n1. Save current garage" +
+                "\n2. Open saved garage" +
                 "\n3. Go back to main menu");
-            HandleInput();
+            while(!HandleInput())
+            {
+                Console.WriteLine("Select one of the menu options to continue");
+            }
             return new MainMenu();
         }
     }
