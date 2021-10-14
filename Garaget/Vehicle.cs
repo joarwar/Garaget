@@ -20,7 +20,8 @@
 
         public override string ToString()
         {
-            return "Tires: " + Tires +
+            return "Type: " + GetType().Name +
+                "\nTires: " + Tires +
                 "\nRegistration number: " + RegisterNumber +
                 "\nColor: " + Color +
                  "\nNumber of seats: " + Space +
