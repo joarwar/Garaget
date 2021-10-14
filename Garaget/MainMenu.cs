@@ -25,7 +25,7 @@ namespace Garaget
                     case 2:
                         return new ParkVehicleMenu();                      
                     case 3:
-                        return new ListVehicles();
+                        return new ListVehiclesMenu();
                     case 4:
                         return new SearchVehiclesMenu();
                     case 5:
