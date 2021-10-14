@@ -10,8 +10,6 @@ namespace Garaget
         static void Main(string[] args)
         {
             Menu currentMenu = new MainMenu();
-            //Menu currentMenu = new GarageCreationMenu();
-
             SetupGarage();
 
             while(currentMenu != null)
