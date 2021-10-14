@@ -28,7 +28,6 @@ namespace Garaget
                     Console.WriteLine("Try again!");
                     break;
             }
-            Console.ReadLine();
             return false;
         }
 
