@@ -119,13 +119,18 @@ namespace Garaget
             }
         }
 
-        public void RestoreState(string path)
+        public bool RestoreState(string path)
         {
+            if(!File.Exists(path))
+            {
+                return false;
+            }
             using(StreamReader file = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
             {
                 JsonConverter converter = new BaseConverter();
                 Program.garage = JsonConvert.DeserializeObject<Garage<Vehicle>>(file.ReadToEnd(), converter);
             }
+            return true;
         }
 
         #region IEnumerableImplementation
