@@ -6,11 +6,11 @@ namespace Garaget
     {
         public int Brand { get; private set; }
         public string Color { get; private set; }
-        private const string menuOptions = "\n1. Motorcycle"
-                          + "\n2. Car"
-                          + "\n3. Bus"
-                          + "\n4. Truck"
-                          + "\n5. Plane"
+        private const string menuOptions = "\n1. Park motorcycle"
+                          + "\n2. Park car"
+                          + "\n3. Park bus"
+                          + "\n4. Park truck"
+                          + "\n5. Park plane"
                           + "\n6. Back to Main menu";
 
         public override Menu ShowMenu()
@@ -20,6 +20,7 @@ namespace Garaget
             while (!HandleInput())
             {
                 Console.WriteLine("Argh! Please try again! Type one of the vehicles:" + menuOptions);
+                
             }
 
 
@@ -37,18 +38,23 @@ namespace Garaget
                 {
                     case 1:
                         ParkMotorcycle();
+                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
                         break;
                     case 2:
                         ParkCar();
+                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
                         break;
                     case 3:
                         ParkBus();
+                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
                         break;
                     case 4:
                         ParkTruck();
+                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
                         break;
                     case 5:
-                        ParkPlane();                       
+                        ParkPlane();
+                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
                         break;
                     case 6:
                         return true;
@@ -56,13 +62,13 @@ namespace Garaget
                         cont = false;
                         break;
                 }
-                Console.WriteLine("Press any key to continue....");
-                Console.ReadLine();
-                Console.WriteLine("What do you want to do?" + menuOptions);
 
             } while (cont);
             return false;
         }
+
+
+
 
         private void ParkPlane()
         {

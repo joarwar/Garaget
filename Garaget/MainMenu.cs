@@ -35,7 +35,7 @@ namespace Garaget
                     case 7:
                         return new ExitMenu();
                     default:
-                        Console.WriteLine("Skriv gärna en siffra mellan 1-5.");
+                        Console.WriteLine("Please only type a number between 1-7.");
                         break;
 
                 }
