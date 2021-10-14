@@ -20,11 +20,12 @@
 
         public override string ToString()
         {
-            return "Registration number: " + RegisterNumber +
+            return "Tires: " + Tires +
+                "\nRegistration number: " + RegisterNumber +
                 "\nColor: " + Color +
-                "\nBrand: " + Brand +
-                "\nTires: " + Tires +
-                "\nNumber of seats: " + Space;
+                 "\nNumber of seats: " + Space +
+                 "\nBrand: " + Brand;
+
         }
     }
 }
