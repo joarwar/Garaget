@@ -119,7 +119,7 @@ namespace Garaget
             }
         }
 
-        public bool RestoreState(string path)
+        public static bool RestoreState(string path)
         {
             if(!File.Exists(path))
             {

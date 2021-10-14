@@ -14,7 +14,7 @@ namespace Garaget
                     Console.WriteLine("Garage saved");
                     break;
                 case 2:
-                    Program.garage.RestoreState(Program.path);
+                    Garage<Vehicle>.RestoreState(Program.path);
                     Console.WriteLine("Garage loaded with the following vehicles:\n");
                     foreach(Vehicle vehicle in Program.garage)
                     {
