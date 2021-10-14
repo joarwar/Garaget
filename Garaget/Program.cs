@@ -14,18 +14,23 @@ namespace Garaget
 
             SetupGarage();
 
-            while(true)
+            while(currentMenu != null)
             {
                 Console.Clear();
-                currentMenu = currentMenu.ShowMenu();
+                currentMenu.ShowMenu();
+                int input = currentMenu.HandleInput();
+                currentMenu = currentMenu.GetNextMenu(input);
             }
 
+            garage.SaveState(path);
+            Console.WriteLine("Garage has been saved");
+            Environment.Exit(0);
         }
 
         // tries to do the initial setup of the garage from file, otherwise create with dummy data
         private static void SetupGarage()
         {
-            if(!garage.RestoreState(path))
+            if(!Garage<Vehicle>.RestoreState(path))
             {
                 garage = new Garage<Vehicle>(20);
                 garage.AddVehicle(new Car(3, "sak222", "green", 5, "tot", "gas", false));

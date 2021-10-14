@@ -5,48 +5,56 @@ namespace Garaget
     class DepartVehicleMenu : Menu
     {
 
-        public override Menu ShowMenu()
+        public override void ShowMenu()
         {
-            Console.WriteLine("Type the number of the vehicle you would like to take out?");
-            for (int vehicleIndex = 0; vehicleIndex < Program.garage.Count; vehicleIndex++)
+            Console.WriteLine("Type the number of the vehicle you would like to take out?"
+                +"\nOr type 0 to return to main menu");
+            if(Program.garage.Count == 0)
             {
-                var item = Program.garage[vehicleIndex];
-                Console.WriteLine((vehicleIndex + 1) + ". " + item.RegisterNumber + " " + item.GetType().Name);
+                Console.WriteLine("There are no veicles in the garage");
             }
-            HandleInput();
-            Console.WriteLine("Press any key to continue.....");
-            Console.ReadLine();
-            
-            return new MainMenu();
+            else
+            {
+                for (int vehicleIndex = 0; vehicleIndex < Program.garage.Count; vehicleIndex++)
+                {
+                    var item = Program.garage[vehicleIndex];
+                    Console.WriteLine((vehicleIndex + 1) + ". " + item.RegisterNumber + " " + item.GetType().Name);
+                }
+            }
         }
 
-        public override bool HandleInput()
+        public override int HandleInput()
         {
-
-            do
+            int input;
+            while(!int.TryParse(Console.ReadLine(), out input) || input < 0 || input > Program.garage.Count)
             {
+                Console.WriteLine("Input does not correspond to a menu option");
+            }
 
-                int departMenu = ParseInput(Console.ReadLine(), Program.garage.Count);
-                if (departMenu > 0 && departMenu <= Program.garage.Count)
+            if (input > 0)
+            {
+                DepartVehicle(input);
+            }
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
+            return input;
+        }
 
-                {
-                    Console.WriteLine(Program.garage[departMenu - 1]);
-                    Program.garage.RemoveVehicle(Program.garage[departMenu - 1]);
-                    //remove vehicle
-                    cont = false;
+        public override Menu GetNextMenu(int input)
+        {
+            if(input == 0)
+            {
+                return new MainMenu();
+            }
+            return this;
+        }
 
-                }
-                else
-                {
-                    Console.WriteLine("Value not accepted, try again");
-                }
-               
-            } while (cont);
-
+        private static void DepartVehicle(int input)
+        {
+            Console.WriteLine("\nThis vehicle is the one to depart:");
+            Console.WriteLine(Program.garage[input - 1]);
             Console.WriteLine("\nDrive safely!");
-
-            return true;
-
+            Program.garage.RemoveVehicle(Program.garage[input - 1]);
         }
     }
 }

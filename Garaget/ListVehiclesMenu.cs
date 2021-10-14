@@ -4,14 +4,7 @@ namespace Garaget
 {
     class ListVehiclesMenu : Menu
     {
-        public override bool HandleInput()
-        {
-            Console.WriteLine("Press any key to get to the main menu");
-            Console.ReadLine();
-            return true;
-        }
-
-        public override Menu ShowMenu()
+        public override void ShowMenu()
         {
             if(Program.garage.Count == 0)
             {
@@ -25,8 +18,17 @@ namespace Garaget
                     Console.WriteLine("-------------------------------");
                 }
             }
+            Console.WriteLine("Press any key to get to the main menu");
+        }
 
-            HandleInput();
+        public override int HandleInput()
+        {
+            Console.ReadLine();
+            return 0;
+        }
+
+        public override Menu GetNextMenu(int input)
+        {
             return new MainMenu();
         }
     }

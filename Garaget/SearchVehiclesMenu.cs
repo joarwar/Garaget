@@ -5,15 +5,41 @@ namespace Garaget
 {
     class SearchVehiclesMenu : Menu
     {
-        public override bool HandleInput()
+        public override void ShowMenu()
         {
+            Console.WriteLine("Choose the property you want to search with:" 
+                    + "\n1. Color"
+                    + "\n2. Registration number" 
+                    + "\n3. Brand" 
+                    + "\n4. Seats" 
+                    + "\n5. Tires" 
+                    + "\n6. Fuel" 
+                    + "\n7. Cabriolet"
+                    + "\n8. School bus" 
+                    + "\n9. Floors" 
+                    + "\n10. Price" 
+                    + "\n11. Cylinders" 
+                    + "\n12. Wings "
+                    + "\n13. Private Plane"
+                    + "\n14. Pickup" 
+                    + "\n15. Model year" 
+                    + "\n16. Go back to main menu." );
+        }
+
+        public override int HandleInput()
+        {
+            int input;
+            while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 16)
+            {
+                Console.WriteLine("Input does not correspond to a menu option");
+            }
+
             List<Vehicle> searchVehicleList = new List<Vehicle>();
-            int searchMenu = ParseInput(Console.ReadLine(), 16);
-            switch (searchMenu)
+            switch(input)
             {
                 case 1:
                     Console.WriteLine("What color?");
-                    searchVehicleList = Program.garage.SearchVehicles("Color", Console.ReadLine()); 
+                    searchVehicleList = Program.garage.SearchVehicles("Color", Console.ReadLine());
                     break;
                 case 2:
                     Console.WriteLine("What registration number?");
@@ -33,11 +59,11 @@ namespace Garaget
                     break;
                 case 6:
                     Console.WriteLine("What fuel does your vehicle use?");
-                    searchVehicleList = Program.garage.SearchVehicles("Fuel",Console.ReadLine());
+                    searchVehicleList = Program.garage.SearchVehicles("Fuel", Console.ReadLine());
                     break;
                 case 7:
                     Console.WriteLine("Is your vehicle a cabriolet?");
-                    searchVehicleList = Program.garage.SearchVehicles("IsCabriolet", GetBoolFromUser()); 
+                    searchVehicleList = Program.garage.SearchVehicles("IsCabriolet", GetBoolFromUser());
                     break;
                 case 8:
                     Console.WriteLine("Is it a school bus?");
@@ -71,51 +97,25 @@ namespace Garaget
                     Console.WriteLine("What is the model year of the vehicle?");
                     searchVehicleList = Program.garage.SearchVehicles("ModelYear", GetIntFromUser());
                     break;
-                case 16:
-                    return false;
                 default:
-                    Console.WriteLine("Try again, please type a number between 1-16");                  
                     break;
             }
-            if (searchVehicleList.Count == 0 )
+
+            if(searchVehicleList.Count == 0)
             {
                 Console.WriteLine("No results was found.");
-                return true;
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadLine();
+                return input;
             }
-            foreach (Vehicle vehicle in searchVehicleList)
+            foreach(Vehicle vehicle in searchVehicleList)
             {
                 Console.WriteLine(vehicle);
                 Console.WriteLine("----------------------------------");
             }
-            return true;
-        }
-
-        public override Menu ShowMenu()
-        {
-            Console.WriteLine("Choose the property you want to search with:" 
-                    + "\n1. Color"
-                    + "\n2. Registration number" 
-                    + "\n3. Brand" 
-                    + "\n4. Seats" 
-                    + "\n5. Tires" 
-                    + "\n6. Fuel" 
-                    + "\n7. Cabriolet"
-                    + "\n8. School bus" 
-                    + "\n9. Floors" 
-                    + "\n10. Price" 
-                    + "\n11. Cylinders" 
-                    + "\n12. Wings "
-                    + "\n13. Private Plane"
-                    + "\n14. Pickup" 
-                    + "\n15. Model year" 
-                    + "\n16. Go back to main menu." );
-
-            while (HandleInput())
-            {
-
-            }
-            
-            return new MainMenu();
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
+            return input;
         }
 
         private bool GetBoolFromUser()
@@ -156,6 +156,15 @@ namespace Garaget
                 Console.WriteLine("Please only write whole numbers");
             }
             return normInt;
+        }
+
+        public override Menu GetNextMenu(int input)
+        {
+            if(input == 16)
+            {
+                return new MainMenu();
+            }
+            return this;
         }
     }
 }

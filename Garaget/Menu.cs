@@ -2,8 +2,9 @@
 {
     public abstract class Menu
     {
-        public abstract Menu ShowMenu();
-        public abstract bool HandleInput();
+        public abstract void ShowMenu();
+        public abstract int HandleInput();
+        public abstract Menu GetNextMenu(int input);
 
         public bool cont = true;
 
@@ -18,7 +19,7 @@
             int returnValue;
             if(!int.TryParse(value, out returnValue))
             {
-                return -1;
+                return 0;
             }
             if(returnValue > amountOfMenuOptions)
             {

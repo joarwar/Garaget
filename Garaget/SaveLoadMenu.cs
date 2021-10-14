@@ -4,44 +4,67 @@ namespace Garaget
 {
     class SaveLoadMenu : Menu
     {
-        public override bool HandleInput()
-        {
-            int saveLoadMenu = ParseInput(Console.ReadLine(), 3);
-            switch (saveLoadMenu)
-            {
-                case 1:
-                    Program.garage.SaveState(Program.path);
-                    Console.WriteLine("Garage saved");
-                    break;
-                case 2:
-                    Program.garage.RestoreState(Program.path);
-                    Console.WriteLine("Garage loaded with the following vehicles:\n");
-                    foreach(Vehicle vehicle in Program.garage)
-                    {
-                        Console.WriteLine(vehicle);
-                        Console.WriteLine("------------------");
-                    }
-                    break;
-                case 3:
-                    return true;
-                default:
-                    Console.WriteLine("Try again!");
-                    break;
-            }
-            return false;
-        }
-
-        public override Menu ShowMenu()
+        public override void ShowMenu()
         {
             Console.WriteLine("What do you want to do?" +
                 "\n1. Save current garage" +
                 "\n2. Open saved garage" +
                 "\n3. Go back to main menu");
-            while(!HandleInput())
+        }
+
+        public override int HandleInput()
+        {
+            int input;
+            while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 3)
             {
-                Console.WriteLine("Select one of the menu options to continue");
+                Console.WriteLine("Input does not correspond to a menu option");
             }
-            return new MainMenu();
+
+            switch(input)
+            {
+                case 1:
+                    SaveGarageToFile();
+                    break;
+                case 2:
+                    LoadGarageFromFile();
+                    ListVehicles();
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
+            return input;
+        }
+
+        public override Menu GetNextMenu(int input)
+        {
+            if(input == 3)
+            {
+                return new MainMenu();
+            }
+            return this;
+        }
+
+        private static void LoadGarageFromFile()
+        {
+            Garage<Vehicle>.RestoreState(Program.path);
+            Console.WriteLine("Garage loaded with the following vehicles:\n");
+        }
+
+        private static void SaveGarageToFile()
+        {
+            Program.garage.SaveState(Program.path);
+            Console.WriteLine("Garage saved");
+        }
+
+        private static void ListVehicles()
+        {
+            foreach(Vehicle vehicle in Program.garage)
+            {
+                Console.WriteLine(vehicle);
+                Console.WriteLine("------------------");
+            }
         }
     }
 }

@@ -6,68 +6,64 @@ namespace Garaget
     {
         public int Brand { get; private set; }
         public string Color { get; private set; }
-        private const string menuOptions = "\n1. Park motorcycle"
+
+        public override void ShowMenu()
+        {
+            Console.WriteLine("What vehicle would you like to park?"
+                          + "\n1. Park motorcycle"
                           + "\n2. Park car"
                           + "\n3. Park bus"
                           + "\n4. Park truck"
                           + "\n5. Park plane"
-                          + "\n6. Back to Main menu";
+                          + "\n6. Back to Main menu");
+        }
 
-        public override Menu ShowMenu()
+        public override int HandleInput()
         {
-
-            Console.WriteLine("What vehicle would you like to park?" + menuOptions);
-            while (!HandleInput())
+            int input;
+            while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 6)
             {
-                Console.WriteLine("Argh! Please try again! Type one of the vehicles:" + menuOptions);
-                
+                Console.WriteLine("Input does not correspond to a menu option");
             }
 
-
-            return new MainMenu();
-
+            ParkVehicle(input);
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
+            return input;
         }
 
-        public override bool HandleInput()
+        private void ParkVehicle(int input)
         {
-            do
+            switch(input)
             {
-
-                int parkMenu = ParseInput(Console.ReadLine(), 6);
-                switch (parkMenu) 
-                {
-                    case 1:
-                        ParkMotorcycle();
-                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
-                        break;
-                    case 2:
-                        ParkCar();
-                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
-                        break;
-                    case 3:
-                        ParkBus();
-                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
-                        break;
-                    case 4:
-                        ParkTruck();
-                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
-                        break;
-                    case 5:
-                        ParkPlane();
-                        Console.WriteLine("Would you like to park another vehicle?" + menuOptions);
-                        break;
-                    case 6:
-                        return true;
-                    default: 
-                        cont = false;
-                        break;
-                }
-
-            } while (cont);
-            return false;
+                case 1:
+                    ParkMotorcycle();
+                    break;
+                case 2:
+                    ParkCar();
+                    break;
+                case 3:
+                    ParkBus();
+                    break;
+                case 4:
+                    ParkTruck();
+                    break;
+                case 5:
+                    ParkPlane();
+                    break;
+                default:
+                    break;
+            }
         }
 
-
+        public override Menu GetNextMenu(int input)
+        {
+            if(input == 6)
+            {
+                return new MainMenu();
+            }
+            return this;
+        }
 
 
         private void ParkPlane()

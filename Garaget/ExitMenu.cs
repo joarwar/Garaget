@@ -4,27 +4,19 @@ namespace Garaget
 {
     class ExitMenu : Menu
     {
-        //public int AmountOfMenuItems { get; set; }
-        //public Menu NextMenu { get; set; }
-        ////tänka om
-        //public ExitMenu()
-        //{
-        //    AmountOfMenuItems = 1;
-        //}
-
-        public override Menu ShowMenu()
+        public override void ShowMenu()
         {
             Console.WriteLine("Thank you for using our garage");
-            HandleInput();
+        }
+
+        public override int HandleInput()
+        {
+            return 0;
+        }
+
+        public override Menu GetNextMenu(int input)
+        {
             return null;
         }
-
-        public override bool HandleInput()
-        {
-            Program.garage.SaveState(Program.path);
-            Environment.Exit(0);
-            return false;
-        }
-
     }
 }

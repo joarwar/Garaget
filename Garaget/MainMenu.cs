@@ -4,7 +4,7 @@ namespace Garaget
 {
     class MainMenu : Menu
     {
-        public override Menu ShowMenu()
+        public override void ShowMenu()
         {      
             Console.WriteLine("What do you want to do?"
                     + "\n1. Create a garage."
@@ -14,43 +14,39 @@ namespace Garaget
                     + "\n5. Depart vehicle from garage." // removes vehicle from garage
                     + "\n6. Save or Load garages." 
                     + "\n7. Exit application");
-
-            do
-            {
-                int caseMenu = ParseInput(Console.ReadLine(), 7);
-                switch (caseMenu)
-                {
-                    case 1:
-                        return new GarageCreationMenu();
-                    case 2:
-                        return new ParkVehicleMenu();                      
-                    case 3:
-                        return new ListVehiclesMenu();
-                    case 4:
-                        return new SearchVehiclesMenu();
-                    case 5:
-                        return new DepartVehicleMenu();
-                    case 6:
-                        return new SaveLoadMenu();
-                    case 7:
-                        return new ExitMenu();
-                    default:
-                        Console.WriteLine("Please only type a number between 1-7.");
-                        break;
-
-                }
-
-            } while (cont == true);
-
-            return null;
         }
 
-
-        public override bool HandleInput()
+        public override int HandleInput()
         {
-            
-            Console.ReadLine();
-            return true;
+            int input;
+            while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 7)
+            {
+                Console.WriteLine("Input does not correspond to a menu option");
+            }
+            return input;
+        }
+
+        public override Menu GetNextMenu(int input)
+        {
+            switch(input)
+            {
+                case 1:
+                    return new GarageCreationMenu();
+                case 2:
+                    return new ParkVehicleMenu();
+                case 3:
+                    return new ListVehiclesMenu();
+                case 4:
+                    return new SearchVehiclesMenu();
+                case 5:
+                    return new DepartVehicleMenu();
+                case 6:
+                    return new SaveLoadMenu();
+                case 7:
+                    return new ExitMenu();
+                default:
+                    return null;
+            }
         }
     }
 }
