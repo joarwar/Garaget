@@ -7,31 +7,40 @@ namespace Garaget
 
         public override void ShowMenu()
         {
-            Console.WriteLine("Type the number of the vehicle you would like to take out?"
-                +"\nOr type 0 to return to main menu");
-            if(Program.garage.Count == 0)
+            if (Program.garage.Count == 0)
             {
-                Console.WriteLine("There are no veicles in the garage");
+                Console.WriteLine("There are no vehicles in the garage");
+                Console.WriteLine("Type 1 to go back.");
+                return;
             }
-            else
+            Console.WriteLine("Type the number of the vehicle you would like to take out?");
+                
+
+            
+            for (int vehicleIndex = 0; vehicleIndex < Program.garage.Count; vehicleIndex++)
             {
-                for (int vehicleIndex = 0; vehicleIndex < Program.garage.Count; vehicleIndex++)
+                var item = Program.garage[vehicleIndex];
+                Console.WriteLine((vehicleIndex + 1) + ". " + item.RegisterNumber + " " + item.GetType().Name);
+
+                if (vehicleIndex == Program.garage.Count - 1)
                 {
-                    var item = Program.garage[vehicleIndex];
-                    Console.WriteLine((vehicleIndex + 1) + ". " + item.RegisterNumber + " " + item.GetType().Name);
+                    Console.WriteLine(vehicleIndex + 2 + ". Return to main menu" );
+                        
                 }
+
             }
+            
         }
 
         public override int HandleInput()
         {
             int input;
-            while(!int.TryParse(Console.ReadLine(), out input) || input < 0 || input > Program.garage.Count)
+            while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > Program.garage.Count + 1)
             {
                 Console.WriteLine("Input does not correspond to a menu option");
             }
 
-            if (input > 0)
+            if (input <= Program.garage.Count)
             {
                 DepartVehicle(input);
             }
@@ -42,7 +51,7 @@ namespace Garaget
 
         public override Menu GetNextMenu(int input)
         {
-            if(input == 0)
+            if(input == Program.garage.Count + 1)
             {
                 return new MainMenu();
             }
