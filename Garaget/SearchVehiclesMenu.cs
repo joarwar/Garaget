@@ -77,8 +77,8 @@ namespace Garaget
                 case 16:
                     return false;
                 default:
-                    Console.WriteLine("Try again, please type a number between 1-16");                  
-                    break;
+                    Console.WriteLine("Try again, please type a number between 1-16");
+                    return true;
             }
             if (searchVehicleList.Count == 0 )
             {
