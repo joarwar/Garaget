@@ -10,16 +10,17 @@ namespace Garaget
                     + "\n1. Create a garage."
                     + "\n2. Park vehicle." // also creates vehicle
                     + "\n3. List vehicles." // show created vehicles
-                    + "\n4. Search vehicles." // searches all vehicles through properties
-                    + "\n5. Depart vehicle from garage." // removes vehicle from garage
-                    + "\n6. Save or Load garages." 
-                    + "\n7. Exit application");
+                    + "\n4. List vehicle types."
+                    + "\n5. Search vehicles." // searches all vehicles through properties
+                    + "\n6. Depart vehicle from garage." // removes vehicle from garage
+                    + "\n7. Save or Load garages." 
+                    + "\n8. Exit application.");
         }
 
         public override int HandleInput()
         {
             int input;
-            while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 7)
+            while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 8)
             {
                 Console.WriteLine("Input does not correspond to a menu option");
             }
@@ -37,12 +38,14 @@ namespace Garaget
                 case 3:
                     return new ListVehiclesMenu();
                 case 4:
-                    return new SearchVehiclesMenu();
+                    return new ListTypesOfVehiclesMenu();
                 case 5:
-                    return new DepartVehicleMenu();
+                    return new SearchVehiclesMenu();
                 case 6:
-                    return new SaveLoadMenu();
+                    return new DepartVehicleMenu();
                 case 7:
+                    return new SaveLoadMenu();
+                case 8:
                     return new ExitMenu();
                 default:
                     return null;

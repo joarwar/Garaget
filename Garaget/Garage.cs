@@ -92,7 +92,7 @@ namespace Garaget
             return vehicles;
         }
 
-        public void ListTypesOfVehicles()
+        public List<string> ListTypesOfVehicles()
         {
             List<string> types = new List<string>();
             foreach(T vehicle in vehicles)
@@ -104,10 +104,11 @@ namespace Garaget
                 }
                 types.Add(vehicleType);
             }
-            foreach(string type in types)
-            {
-                Console.WriteLine(type);
-            }
+            return types;
+            //foreach(string type in types)
+            //{
+            //    Console.WriteLine(type);
+            //}
         }
         
         public void SaveState(string path)
