@@ -20,13 +20,23 @@ namespace Garaget
 
         public override int HandleInput()
         {
+            
             int input;
             while(!int.TryParse(Console.ReadLine(), out input) || input < 1 || input > 6)
             {
                 Console.WriteLine("Input does not correspond to a menu option");
             }
+            if (Program.garage.Count >= Program.garage.ParkingSpots)
+            {
+                Console.WriteLine("Garage is currently full, in order to park a vehicle another vehicle has to depart first.");
 
-            ParkVehicle(input);
+            }
+            else
+            {
+                ParkVehicle(input);
+            }
+
+            
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
             return input;
