@@ -113,7 +113,9 @@ namespace Garaget
         
         public void SaveState(string path)
         {
-            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            JsonSerializerSettings settings = new JsonSerializerSettings{
+                TypeNameHandling = TypeNameHandling.All };
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented, settings);
             using(StreamWriter file = new StreamWriter(path, false, Encoding.GetEncoding("ISO-8859-1")))
             {
                 file.Write(json);
@@ -128,8 +130,12 @@ namespace Garaget
             }
             using(StreamReader file = new StreamReader(path, Encoding.GetEncoding("ISO-8859-1")))
             {
-                JsonConverter converter = new BaseConverter();
-                Program.garage = JsonConvert.DeserializeObject<Garage<Vehicle>>(file.ReadToEnd(), converter);
+                JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
+                //JsonConverter converter = new BaseConverter();
+                Program.garage = JsonConvert.DeserializeObject<Garage<Vehicle>>(file.ReadToEnd(), settings);
             }
             return true;
         }
