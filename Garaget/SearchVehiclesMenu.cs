@@ -97,6 +97,8 @@ namespace Garaget
                     Console.WriteLine("What is the model year of the vehicle?");
                     searchVehicleList = Program.garage.SearchVehicles("ModelYear", GetIntFromUser());
                     break;
+                case 16:
+                    return 16;
                 default:
                     break;
             }
